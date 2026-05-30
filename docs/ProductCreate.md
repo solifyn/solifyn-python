@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **has_license_key** | **bool** | Whether to automatically issue license keys upon successful orders. | [optional] [default to False]
 **has_digital_delivery** | **bool** | Whether the purchase includes downloadable files. | [optional] [default to False]
 **is_tax_inclusive** | **bool** | Whether tax is included in the base price. | [optional] [default to False]
-**activation_limit** | **int** | Maximum concurrent activated instances allowed per license key. | [optional] [default to null]
+**activation_limit** | **int** | Maximum concurrent activated instances allowed per license key. | [optional] 
 **brand_id** | **str** | Brand id for the product, if not provided will default to primary brand. | [optional] 
 **billing_period** | **int** | Billing period in days (for Subscription products). | [optional] 
 **trial_period_days** | **int** | Trial duration in days. | [optional] 

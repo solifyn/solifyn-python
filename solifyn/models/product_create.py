@@ -39,7 +39,7 @@ class ProductCreate(BaseModel):
     has_license_key: Optional[StrictBool] = Field(default=False, description="Whether to automatically issue license keys upon successful orders.", alias="hasLicenseKey")
     has_digital_delivery: Optional[StrictBool] = Field(default=False, description="Whether the purchase includes downloadable files.", alias="hasDigitalDelivery")
     is_tax_inclusive: Optional[StrictBool] = Field(default=False, description="Whether tax is included in the base price.", alias="isTaxInclusive")
-    activation_limit: Optional[StrictInt] = Field(default=null, description="Maximum concurrent activated instances allowed per license key.", alias="activationLimit")
+    activation_limit: Optional[StrictInt] = Field(default=None, description="Maximum concurrent activated instances allowed per license key.", alias="activationLimit")
     brand_id: Optional[StrictStr] = Field(default=None, description="Brand id for the product, if not provided will default to primary brand.", alias="brandId")
     billing_period: Optional[StrictInt] = Field(default=None, description="Billing period in days (for Subscription products).", alias="billingPeriod")
     trial_period_days: Optional[StrictInt] = Field(default=None, description="Trial duration in days.", alias="trialPeriodDays")
@@ -142,7 +142,7 @@ class ProductCreate(BaseModel):
             "hasLicenseKey": obj.get("hasLicenseKey") if obj.get("hasLicenseKey") is not None else False,
             "hasDigitalDelivery": obj.get("hasDigitalDelivery") if obj.get("hasDigitalDelivery") is not None else False,
             "isTaxInclusive": obj.get("isTaxInclusive") if obj.get("isTaxInclusive") is not None else False,
-            "activationLimit": obj.get("activationLimit") if obj.get("activationLimit") is not None else null,
+            "activationLimit": obj.get("activationLimit"),
             "brandId": obj.get("brandId"),
             "billingPeriod": obj.get("billingPeriod"),
             "trialPeriodDays": obj.get("trialPeriodDays"),
