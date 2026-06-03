@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from solifyn.models.order_billing import OrderBilling
 from solifyn.models.order_customer import OrderCustomer
 from solifyn.models.order_detail import OrderDetail
@@ -38,6 +38,7 @@ class Order(BaseModel):
     customer: OrderCustomer = Field(description="Customer details.")
     total_amount: StrictInt = Field(description="Total paid amount in cents.")
     subtotal: StrictInt = Field(description="Subtotal amount in cents.")
+    usd_total: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Total paid amount converted to USD.", alias="usdTotal")
     tax_amount: StrictInt = Field(description="Tax amount in cents.")
     application_fee: StrictInt = Field(description="Application fee in cents.")
     amount_after_fees: StrictInt = Field(description="Net amount after fees in cents.")
@@ -58,7 +59,7 @@ class Order(BaseModel):
     business_id: StrictStr = Field(description="Business unique ID identifier.", alias="businessId")
     business_name: StrictStr = Field(description="Business display title/name.", alias="businessName")
     billing_reason: Optional[StrictStr] = Field(default=None, description="Billing reason detail.")
-    __properties: ClassVar[List[str]] = ["id", "invoice_url", "customer", "total_amount", "subtotal", "tax_amount", "application_fee", "amount_after_fees", "currency", "status", "created_at", "paidAt", "payment_method", "card_last_four", "card_network", "card_type", "billing", "product_cart", "metadata", "order", "refundable", "refunds", "businessId", "businessName", "billing_reason"]
+    __properties: ClassVar[List[str]] = ["id", "invoice_url", "customer", "total_amount", "subtotal", "usdTotal", "tax_amount", "application_fee", "amount_after_fees", "currency", "status", "created_at", "paidAt", "payment_method", "card_last_four", "card_network", "card_type", "billing", "product_cart", "metadata", "order", "refundable", "refunds", "businessId", "businessName", "billing_reason"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -139,6 +140,7 @@ class Order(BaseModel):
             "customer": OrderCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
             "total_amount": obj.get("total_amount"),
             "subtotal": obj.get("subtotal"),
+            "usdTotal": obj.get("usdTotal"),
             "tax_amount": obj.get("tax_amount"),
             "application_fee": obj.get("application_fee"),
             "amount_after_fees": obj.get("amount_after_fees"),

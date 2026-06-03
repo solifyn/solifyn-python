@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **dispute_created_post**
-> dispute_created_post(unknown_base_type=unknown_base_type)
+> dispute_created_post(webhook_dispute_payload=webhook_dispute_payload)
 
 Dispute Created
 
@@ -55,11 +55,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_dispute_payload = solifyn.WebhookDisputePayload() # WebhookDisputePayload |  (optional)
 
     try:
         # Dispute Created
-        api_instance.dispute_created_post(unknown_base_type=unknown_base_type)
+        api_instance.dispute_created_post(webhook_dispute_payload=webhook_dispute_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->dispute_created_post: %s\n" % e)
 ```
@@ -71,7 +71,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_dispute_payload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] 
 
 ### Return type
 
@@ -95,7 +95,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_lost_post**
-> dispute_lost_post(unknown_base_type=unknown_base_type)
+> dispute_lost_post(webhook_dispute_payload=webhook_dispute_payload)
 
 Dispute Lost
 
@@ -130,11 +130,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_dispute_payload = solifyn.WebhookDisputePayload() # WebhookDisputePayload |  (optional)
 
     try:
         # Dispute Lost
-        api_instance.dispute_lost_post(unknown_base_type=unknown_base_type)
+        api_instance.dispute_lost_post(webhook_dispute_payload=webhook_dispute_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->dispute_lost_post: %s\n" % e)
 ```
@@ -146,7 +146,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_dispute_payload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] 
 
 ### Return type
 
@@ -170,7 +170,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dispute_won_post**
-> dispute_won_post(unknown_base_type=unknown_base_type)
+> dispute_won_post(webhook_dispute_payload=webhook_dispute_payload)
 
 Dispute Won
 
@@ -205,11 +205,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_dispute_payload = solifyn.WebhookDisputePayload() # WebhookDisputePayload |  (optional)
 
     try:
         # Dispute Won
-        api_instance.dispute_won_post(unknown_base_type=unknown_base_type)
+        api_instance.dispute_won_post(webhook_dispute_payload=webhook_dispute_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->dispute_won_post: %s\n" % e)
 ```
@@ -221,7 +221,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_dispute_payload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] 
 
 ### Return type
 
@@ -245,7 +245,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **license_created_post**
-> license_created_post(license=license)
+> license_created_post(webhook_license_payload=webhook_license_payload)
 
 License Created
 
@@ -280,11 +280,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    license = solifyn.License() # License |  (optional)
+    webhook_license_payload = solifyn.WebhookLicensePayload() # WebhookLicensePayload |  (optional)
 
     try:
         # License Created
-        api_instance.license_created_post(license=license)
+        api_instance.license_created_post(webhook_license_payload=webhook_license_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->license_created_post: %s\n" % e)
 ```
@@ -296,7 +296,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **license** | [**License**](License.md)|  | [optional] 
+ **webhook_license_payload** | [**WebhookLicensePayload**](WebhookLicensePayload.md)|  | [optional] 
 
 ### Return type
 
@@ -320,7 +320,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **license_revoked_post**
-> license_revoked_post(license=license)
+> license_revoked_post(webhook_license_payload=webhook_license_payload)
 
 License Revoked
 
@@ -355,11 +355,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    license = solifyn.License() # License |  (optional)
+    webhook_license_payload = solifyn.WebhookLicensePayload() # WebhookLicensePayload |  (optional)
 
     try:
         # License Revoked
-        api_instance.license_revoked_post(license=license)
+        api_instance.license_revoked_post(webhook_license_payload=webhook_license_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->license_revoked_post: %s\n" % e)
 ```
@@ -371,7 +371,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **license** | [**License**](License.md)|  | [optional] 
+ **webhook_license_payload** | [**WebhookLicensePayload**](WebhookLicensePayload.md)|  | [optional] 
 
 ### Return type
 
@@ -395,7 +395,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payment_created_post**
-> payment_created_post(unknown_base_type=unknown_base_type)
+> payment_created_post(webhook_payment_payload=webhook_payment_payload)
 
 Payment Created
 
@@ -430,11 +430,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = {"id":"pay_123","status":"created","substatus":"incomplete","customerId":"usr_123","customerEmail":"customer@example.com","customerName":"John Doe","customerUsername":"johndoe","productTitle":"SaaS Pro Access","productRoute":"saas-pro-access","planId":"plan_123","membershipId":"mem_123","membershipStatus":"drafted","billingReason":"subscription_create","amount":"29.00","subtotal":"29.00","usdTotal":"29.00","feeAmount":"1.50","amountAfterFees":"27.50","taxAmount":null,"taxBehavior":null,"taxRefundedAmount":null,"refundedAmount":"0","settlementAmount":"29.00","settlementCurrency":"usd","settlementExchangeRate":null,"currency":"USD","refundable":false,"retryable":false,"autoRefunded":false,"paymentMethod":null,"cardBrand":null,"cardLast4":null,"cardExpMonth":null,"cardExpYear":null,"billingAddress":{"name":"John Doe","line1":"123 Main St","line2":"","city":"San Francisco","state":"CA","country":"US","postal_code":"94105"},"licenseKey":null,"filesSnapshot":null,"checkoutId":null,"discountCode":null,"failureMessage":null,"paidAt":"2026-05-25T20:20:05.000Z","refundedAt":null,"disputeAlertedAt":null,"lastPaymentAttempt":null,"nextPaymentAttempt":"2026-05-25T20:20:05.000Z","createdAt":"2026-05-25T20:20:06.000Z","updatedAt":"2026-05-25T20:20:06.000Z","paymentEventType":"payment.created","lastEventType":"payment.created","businessId":"biz_123"} # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_payment_payload = {"id":"pay_123","status":"created","substatus":"incomplete","customerId":"usr_123","customerEmail":"customer@example.com","customerName":"John Doe","customerUsername":"johndoe","productTitle":"SaaS Pro Access","productRoute":"saas-pro-access","planId":"plan_123","membershipId":"mem_123","membershipStatus":"drafted","billingReason":"subscription_create","amount":"29.00","subtotal":"29.00","usdTotal":"29.00","feeAmount":"1.50","amountAfterFees":"27.50","taxAmount":null,"taxBehavior":null,"taxRefundedAmount":null,"refundedAmount":"0","settlementAmount":"29.00","settlementCurrency":"usd","settlementExchangeRate":null,"currency":"USD","refundable":false,"retryable":false,"autoRefunded":false,"paymentMethod":null,"cardBrand":null,"cardLast4":null,"cardExpMonth":null,"cardExpYear":null,"billingAddress":{"name":"John Doe","line1":"123 Main St","line2":"","city":"San Francisco","state":"CA","country":"US","postal_code":"94105"},"licenseKey":null,"filesSnapshot":null,"checkoutId":null,"discountCode":null,"failureMessage":null,"paidAt":"2026-05-25T20:20:05.000Z","refundedAt":null,"disputeAlertedAt":null,"lastPaymentAttempt":null,"nextPaymentAttempt":"2026-05-25T20:20:05.000Z","createdAt":"2026-05-25T20:20:06.000Z","updatedAt":"2026-05-25T20:20:06.000Z","paymentEventType":"payment.created","lastEventType":"payment.created","businessId":"biz_123"} # WebhookPaymentPayload |  (optional)
 
     try:
         # Payment Created
-        api_instance.payment_created_post(unknown_base_type=unknown_base_type)
+        api_instance.payment_created_post(webhook_payment_payload=webhook_payment_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->payment_created_post: %s\n" % e)
 ```
@@ -446,7 +446,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_payment_payload** | [**WebhookPaymentPayload**](WebhookPaymentPayload.md)|  | [optional] 
 
 ### Return type
 
@@ -620,7 +620,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_failed_post**
-> refund_failed_post(unknown_base_type=unknown_base_type)
+> refund_failed_post(webhook_refund_payload=webhook_refund_payload)
 
 Refund Failed
 
@@ -655,11 +655,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_refund_payload = solifyn.WebhookRefundPayload() # WebhookRefundPayload |  (optional)
 
     try:
         # Refund Failed
-        api_instance.refund_failed_post(unknown_base_type=unknown_base_type)
+        api_instance.refund_failed_post(webhook_refund_payload=webhook_refund_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->refund_failed_post: %s\n" % e)
 ```
@@ -671,7 +671,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_refund_payload** | [**WebhookRefundPayload**](WebhookRefundPayload.md)|  | [optional] 
 
 ### Return type
 
@@ -695,7 +695,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refund_succeeded_post**
-> refund_succeeded_post(unknown_base_type=unknown_base_type)
+> refund_succeeded_post(webhook_refund_payload=webhook_refund_payload)
 
 Refund Succeeded
 
@@ -730,11 +730,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_refund_payload = solifyn.WebhookRefundPayload() # WebhookRefundPayload |  (optional)
 
     try:
         # Refund Succeeded
-        api_instance.refund_succeeded_post(unknown_base_type=unknown_base_type)
+        api_instance.refund_succeeded_post(webhook_refund_payload=webhook_refund_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->refund_succeeded_post: %s\n" % e)
 ```
@@ -746,7 +746,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_refund_payload** | [**WebhookRefundPayload**](WebhookRefundPayload.md)|  | [optional] 
 
 ### Return type
 
@@ -770,7 +770,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_created_post**
-> subscription_created_post(unknown_base_type=unknown_base_type)
+> subscription_created_post(webhook_subscription_payload=webhook_subscription_payload)
 
 Subscription Created
 
@@ -805,11 +805,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_subscription_payload = solifyn.WebhookSubscriptionPayload() # WebhookSubscriptionPayload |  (optional)
 
     try:
         # Subscription Created
-        api_instance.subscription_created_post(unknown_base_type=unknown_base_type)
+        api_instance.subscription_created_post(webhook_subscription_payload=webhook_subscription_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->subscription_created_post: %s\n" % e)
 ```
@@ -821,7 +821,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_subscription_payload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] 
 
 ### Return type
 
@@ -845,7 +845,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_deactivated_post**
-> subscription_deactivated_post(unknown_base_type=unknown_base_type)
+> subscription_deactivated_post(webhook_subscription_payload=webhook_subscription_payload)
 
 Subscription Deactivated
 
@@ -880,11 +880,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_subscription_payload = solifyn.WebhookSubscriptionPayload() # WebhookSubscriptionPayload |  (optional)
 
     try:
         # Subscription Deactivated
-        api_instance.subscription_deactivated_post(unknown_base_type=unknown_base_type)
+        api_instance.subscription_deactivated_post(webhook_subscription_payload=webhook_subscription_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->subscription_deactivated_post: %s\n" % e)
 ```
@@ -896,7 +896,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_subscription_payload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] 
 
 ### Return type
 
@@ -920,7 +920,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **subscription_updated_post**
-> subscription_updated_post(unknown_base_type=unknown_base_type)
+> subscription_updated_post(webhook_subscription_payload=webhook_subscription_payload)
 
 Subscription Updated
 
@@ -955,11 +955,11 @@ configuration = solifyn.Configuration(
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.DefaultApi(api_client)
-    unknown_base_type = solifyn.UNKNOWN_BASE_TYPE() # UNKNOWN_BASE_TYPE |  (optional)
+    webhook_subscription_payload = solifyn.WebhookSubscriptionPayload() # WebhookSubscriptionPayload |  (optional)
 
     try:
         # Subscription Updated
-        api_instance.subscription_updated_post(unknown_base_type=unknown_base_type)
+        api_instance.subscription_updated_post(webhook_subscription_payload=webhook_subscription_payload)
     except Exception as e:
         print("Exception when calling DefaultApi->subscription_updated_post: %s\n" % e)
 ```
@@ -971,7 +971,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] 
+ **webhook_subscription_payload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] 
 
 ### Return type
 

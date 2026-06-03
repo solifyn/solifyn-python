@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**checkout_create**](CheckoutApi.md#checkout_create) | **POST** /v1/checkout/create | Create Checkout Session
 [**checkout_create_collection**](CheckoutApi.md#checkout_create_collection) | **POST** /v1/checkout/collection/create | Create Collection Checkout Session
+[**checkout_create_setup**](CheckoutApi.md#checkout_create_setup) | **POST** /v1/checkout/setup-configuration | Create Setup Checkout Configuration
 [**checkout_get_session**](CheckoutApi.md#checkout_get_session) | **GET** /v1/checkout/session/{id} | Get Checkout Session Details
 [**checkout_price_preview**](CheckoutApi.md#checkout_price_preview) | **GET** /v1/checkout/price-preview | Get Converted Price Preview
 [**checkout_supported_currencies**](CheckoutApi.md#checkout_supported_currencies) | **GET** /v1/checkout/supported-currencies | Get Supported Currencies
@@ -146,6 +147,72 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Collection checkout session created. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **checkout_create_setup**
+> checkout_create_setup(create_setup_checkout_dto)
+
+Create Setup Checkout Configuration
+
+Create a new checkout session in setup mode for collecting cards without immediate charge.
+
+### Example
+
+
+```python
+import solifyn
+from solifyn.models.create_setup_checkout_dto import CreateSetupCheckoutDto
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8000
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "http://localhost:8000"
+)
+
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.CheckoutApi(api_client)
+    create_setup_checkout_dto = solifyn.CreateSetupCheckoutDto() # CreateSetupCheckoutDto | 
+
+    try:
+        # Create Setup Checkout Configuration
+        api_instance.checkout_create_setup(create_setup_checkout_dto)
+    except Exception as e:
+        print("Exception when calling CheckoutApi->checkout_create_setup: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_setup_checkout_dto** | [**CreateSetupCheckoutDto**](CreateSetupCheckoutDto.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Setup checkout configuration created. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

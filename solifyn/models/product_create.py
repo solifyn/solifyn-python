@@ -50,8 +50,9 @@ class ProductCreate(BaseModel):
     custom_fields: Optional[List[ProductCreateCustomFieldsInner]] = Field(default=None, description="Form field configurations to gather during checkout.", alias="customFields")
     stock: Optional[StrictInt] = Field(default=None, description="Initial stock quantity limit.")
     is_listed: Optional[StrictBool] = Field(default=True, description="Whether the product is publicly visible.", alias="isListed")
+    is_free: Optional[StrictBool] = Field(default=False, description="Whether the product is free of charge.", alias="isFree")
     addons: Optional[List[ProductCreateAddonsInner]] = Field(default=None, description="Product addons configurations.")
-    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "addons"]
+    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons"]
 
     @field_validator('currency')
     def currency_validate_enum(cls, value):
@@ -153,6 +154,7 @@ class ProductCreate(BaseModel):
             "customFields": [ProductCreateCustomFieldsInner.from_dict(_item) for _item in obj["customFields"]] if obj.get("customFields") is not None else None,
             "stock": obj.get("stock"),
             "isListed": obj.get("isListed") if obj.get("isListed") is not None else True,
+            "isFree": obj.get("isFree") if obj.get("isFree") is not None else False,
             "addons": [ProductCreateAddonsInner.from_dict(_item) for _item in obj["addons"]] if obj.get("addons") is not None else None
         })
         return _obj

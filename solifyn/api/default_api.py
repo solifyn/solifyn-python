@@ -17,9 +17,12 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from solifyn.models.license import License
 from solifyn.models.order import Order
-from solifyn.models.unknownbasetype import UNKNOWN_BASE_TYPE
+from solifyn.models.webhook_dispute_payload import WebhookDisputePayload
+from solifyn.models.webhook_license_payload import WebhookLicensePayload
+from solifyn.models.webhook_payment_payload import WebhookPaymentPayload
+from solifyn.models.webhook_refund_payload import WebhookRefundPayload
+from solifyn.models.webhook_subscription_payload import WebhookSubscriptionPayload
 
 from solifyn.api_client import ApiClient, RequestSerialized
 from solifyn.api_response import ApiResponse
@@ -42,7 +45,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,8 +63,8 @@ class DefaultApi:
 
         Occurs when a payment charge is disputed by the customer (chargeback initiated).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,7 +88,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +112,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,8 +130,8 @@ class DefaultApi:
 
         Occurs when a payment charge is disputed by the customer (chargeback initiated).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -152,7 +155,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -176,7 +179,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -194,8 +197,8 @@ class DefaultApi:
 
         Occurs when a payment charge is disputed by the customer (chargeback initiated).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,7 +222,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,7 +241,7 @@ class DefaultApi:
 
     def _dispute_created_post_serialize(
         self,
-        unknown_base_type,
+        webhook_dispute_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -264,8 +267,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_dispute_payload is not None:
+            _body_params = webhook_dispute_payload
 
 
 
@@ -309,7 +312,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -327,8 +330,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is lost and the funds are returned to the cardholder.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -352,7 +355,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_lost_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -376,7 +379,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -394,8 +397,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is lost and the funds are returned to the cardholder.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -419,7 +422,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_lost_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -443,7 +446,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -461,8 +464,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is lost and the funds are returned to the cardholder.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -486,7 +489,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_lost_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -505,7 +508,7 @@ class DefaultApi:
 
     def _dispute_lost_post_serialize(
         self,
-        unknown_base_type,
+        webhook_dispute_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -531,8 +534,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_dispute_payload is not None:
+            _body_params = webhook_dispute_payload
 
 
 
@@ -576,7 +579,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -594,8 +597,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is won by the merchant.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -619,7 +622,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_won_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -643,7 +646,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -661,8 +664,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is won by the merchant.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -686,7 +689,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_won_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -710,7 +713,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_dispute_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -728,8 +731,8 @@ class DefaultApi:
 
         Occurs when a dispute challenge is won by the merchant.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_dispute_payload:
+        :type webhook_dispute_payload: WebhookDisputePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -753,7 +756,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._dispute_won_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_dispute_payload=webhook_dispute_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -772,7 +775,7 @@ class DefaultApi:
 
     def _dispute_won_post_serialize(
         self,
-        unknown_base_type,
+        webhook_dispute_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -798,8 +801,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_dispute_payload is not None:
+            _body_params = webhook_dispute_payload
 
 
 
@@ -843,7 +846,7 @@ class DefaultApi:
     @validate_call
     def license_created_post(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -861,8 +864,8 @@ class DefaultApi:
 
         Occurs when a new software license key is created or assigned to a customer purchase.
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -886,7 +889,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_created_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -910,7 +913,7 @@ class DefaultApi:
     @validate_call
     def license_created_post_with_http_info(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -928,8 +931,8 @@ class DefaultApi:
 
         Occurs when a new software license key is created or assigned to a customer purchase.
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -953,7 +956,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_created_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -977,7 +980,7 @@ class DefaultApi:
     @validate_call
     def license_created_post_without_preload_content(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -995,8 +998,8 @@ class DefaultApi:
 
         Occurs when a new software license key is created or assigned to a customer purchase.
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1020,7 +1023,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_created_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1039,7 +1042,7 @@ class DefaultApi:
 
     def _license_created_post_serialize(
         self,
-        license,
+        webhook_license_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -1065,8 +1068,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if license is not None:
-            _body_params = license
+        if webhook_license_payload is not None:
+            _body_params = webhook_license_payload
 
 
 
@@ -1110,7 +1113,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1128,8 +1131,8 @@ class DefaultApi:
 
         Occurs when a software license key is revoked (e.g., due to subscription cancellation, refund, or dispute).
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1153,7 +1156,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_revoked_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1177,7 +1180,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post_with_http_info(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1195,8 +1198,8 @@ class DefaultApi:
 
         Occurs when a software license key is revoked (e.g., due to subscription cancellation, refund, or dispute).
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1220,7 +1223,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_revoked_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1244,7 +1247,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post_without_preload_content(
         self,
-        license:  = None,
+        webhook_license_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1262,8 +1265,8 @@ class DefaultApi:
 
         Occurs when a software license key is revoked (e.g., due to subscription cancellation, refund, or dispute).
 
-        :param license:
-        :type license: License
+        :param webhook_license_payload:
+        :type webhook_license_payload: WebhookLicensePayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1287,7 +1290,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._license_revoked_post_serialize(
-            license=license,
+            webhook_license_payload=webhook_license_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1306,7 +1309,7 @@ class DefaultApi:
 
     def _license_revoked_post_serialize(
         self,
-        license,
+        webhook_license_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -1332,8 +1335,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if license is not None:
-            _body_params = license
+        if webhook_license_payload is not None:
+            _body_params = webhook_license_payload
 
 
 
@@ -1377,7 +1380,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post(
         self,
-        unknown_base_type:  = None,
+        webhook_payment_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1395,8 +1398,8 @@ class DefaultApi:
 
         Occurs when a new payment is initiated (e.g., at checkout start or subscription creation). The payment may still be in an incomplete or pending state.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_payment_payload:
+        :type webhook_payment_payload: WebhookPaymentPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1420,7 +1423,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._payment_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_payment_payload=webhook_payment_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1444,7 +1447,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_payment_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1462,8 +1465,8 @@ class DefaultApi:
 
         Occurs when a new payment is initiated (e.g., at checkout start or subscription creation). The payment may still be in an incomplete or pending state.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_payment_payload:
+        :type webhook_payment_payload: WebhookPaymentPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1487,7 +1490,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._payment_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_payment_payload=webhook_payment_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1511,7 +1514,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_payment_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1529,8 +1532,8 @@ class DefaultApi:
 
         Occurs when a new payment is initiated (e.g., at checkout start or subscription creation). The payment may still be in an incomplete or pending state.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_payment_payload:
+        :type webhook_payment_payload: WebhookPaymentPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1554,7 +1557,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._payment_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_payment_payload=webhook_payment_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1573,7 +1576,7 @@ class DefaultApi:
 
     def _payment_created_post_serialize(
         self,
-        unknown_base_type,
+        webhook_payment_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -1599,8 +1602,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_payment_payload is not None:
+            _body_params = webhook_payment_payload
 
 
 
@@ -2178,7 +2181,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2196,8 +2199,8 @@ class DefaultApi:
 
         Occurs when a payment refund fails.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2221,7 +2224,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_failed_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2245,7 +2248,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2263,8 +2266,8 @@ class DefaultApi:
 
         Occurs when a payment refund fails.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2288,7 +2291,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_failed_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2312,7 +2315,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2330,8 +2333,8 @@ class DefaultApi:
 
         Occurs when a payment refund fails.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2355,7 +2358,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_failed_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2374,7 +2377,7 @@ class DefaultApi:
 
     def _refund_failed_post_serialize(
         self,
-        unknown_base_type,
+        webhook_refund_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -2400,8 +2403,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_refund_payload is not None:
+            _body_params = webhook_refund_payload
 
 
 
@@ -2445,7 +2448,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2463,8 +2466,8 @@ class DefaultApi:
 
         Occurs when a payment refund is confirmed as succeeded.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2488,7 +2491,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_succeeded_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2512,7 +2515,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2530,8 +2533,8 @@ class DefaultApi:
 
         Occurs when a payment refund is confirmed as succeeded.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2555,7 +2558,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_succeeded_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2579,7 +2582,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_refund_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2597,8 +2600,8 @@ class DefaultApi:
 
         Occurs when a payment refund is confirmed as succeeded.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_refund_payload:
+        :type webhook_refund_payload: WebhookRefundPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2622,7 +2625,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._refund_succeeded_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_refund_payload=webhook_refund_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2641,7 +2644,7 @@ class DefaultApi:
 
     def _refund_succeeded_post_serialize(
         self,
-        unknown_base_type,
+        webhook_refund_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -2667,8 +2670,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_refund_payload is not None:
+            _body_params = webhook_refund_payload
 
 
 
@@ -2712,7 +2715,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2730,8 +2733,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is successfully started.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2755,7 +2758,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2779,7 +2782,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2797,8 +2800,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is successfully started.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2822,7 +2825,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2846,7 +2849,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2864,8 +2867,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is successfully started.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2889,7 +2892,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_created_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2908,7 +2911,7 @@ class DefaultApi:
 
     def _subscription_created_post_serialize(
         self,
-        unknown_base_type,
+        webhook_subscription_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -2934,8 +2937,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_subscription_payload is not None:
+            _body_params = webhook_subscription_payload
 
 
 
@@ -2979,7 +2982,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2997,8 +3000,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is deactivated or expired.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3022,7 +3025,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_deactivated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3046,7 +3049,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3064,8 +3067,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is deactivated or expired.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3089,7 +3092,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_deactivated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3113,7 +3116,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3131,8 +3134,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is deactivated or expired.
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3156,7 +3159,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_deactivated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3175,7 +3178,7 @@ class DefaultApi:
 
     def _subscription_deactivated_post_serialize(
         self,
-        unknown_base_type,
+        webhook_subscription_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -3201,8 +3204,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_subscription_payload is not None:
+            _body_params = webhook_subscription_payload
 
 
 
@@ -3246,7 +3249,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3264,8 +3267,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is updated (e.g., cancel at period end changes).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3289,7 +3292,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_updated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3313,7 +3316,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post_with_http_info(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3331,8 +3334,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is updated (e.g., cancel at period end changes).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3356,7 +3359,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_updated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3380,7 +3383,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post_without_preload_content(
         self,
-        unknown_base_type:  = None,
+        webhook_subscription_payload:  = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3398,8 +3401,8 @@ class DefaultApi:
 
         Occurs when a customer subscription is updated (e.g., cancel at period end changes).
 
-        :param unknown_base_type:
-        :type unknown_base_type: UNKNOWN_BASE_TYPE
+        :param webhook_subscription_payload:
+        :type webhook_subscription_payload: WebhookSubscriptionPayload
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3423,7 +3426,7 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._subscription_updated_post_serialize(
-            unknown_base_type=unknown_base_type,
+            webhook_subscription_payload=webhook_subscription_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3442,7 +3445,7 @@ class DefaultApi:
 
     def _subscription_updated_post_serialize(
         self,
-        unknown_base_type,
+        webhook_subscription_payload,
         _request_auth,
         _content_type,
         _headers,
@@ -3468,8 +3471,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if unknown_base_type is not None:
-            _body_params = unknown_base_type
+        if webhook_subscription_payload is not None:
+            _body_params = webhook_subscription_payload
 
 
 

@@ -51,6 +51,7 @@ class CollectionProductDto(BaseModel):
     stock: StrictInt = Field(description="Available stock quantity, or null for unlimited inventory.")
     activation_limit: StrictInt = Field(description="Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true).", alias="activationLimit")
     is_listed: StrictBool = Field(description="Defines if the product is listed publicly on the merchant's storefront template.", alias="isListed")
+    is_free: StrictBool = Field(description="Whether the product is free.", alias="isFree")
     created_at: datetime = Field(description="Timestamp indicating exactly when the product was created.", alias="createdAt")
     updated_at: datetime = Field(description="Timestamp indicating when the product was last modified.", alias="updatedAt")
     is_permanently_deleted: StrictBool = Field(description="Indicates if the product has been permanently deleted.", alias="isPermanentlyDeleted")
@@ -61,7 +62,7 @@ class CollectionProductDto(BaseModel):
     expiry_hours: StrictInt = Field(description="Number of hours until the license key expires.", alias="expiryHours")
     business_id: StrictStr = Field(description="The unique identifier of the business owning this product.", alias="businessId")
     quantity: Union[StrictFloat, StrictInt] = Field(description="Quantity of the product in the collection")
-    __properties: ClassVar[List[str]] = ["id", "name", "price", "currency", "description", "status", "imageUrl", "taxCategory", "pricingType", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "activationLimit", "isListed", "createdAt", "updatedAt", "isPermanentlyDeleted", "brandId", "digitalLink", "instructions", "activationMessage", "expiryHours", "businessId", "quantity"]
+    __properties: ClassVar[List[str]] = ["id", "name", "price", "currency", "description", "status", "imageUrl", "taxCategory", "pricingType", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "activationLimit", "isListed", "isFree", "createdAt", "updatedAt", "isPermanentlyDeleted", "brandId", "digitalLink", "instructions", "activationMessage", "expiryHours", "businessId", "quantity"]
 
     @field_validator('tax_category')
     def tax_category_validate_enum(cls, value):
@@ -151,6 +152,7 @@ class CollectionProductDto(BaseModel):
             "stock": obj.get("stock"),
             "activationLimit": obj.get("activationLimit"),
             "isListed": obj.get("isListed"),
+            "isFree": obj.get("isFree"),
             "createdAt": obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt"),
             "isPermanentlyDeleted": obj.get("isPermanentlyDeleted"),

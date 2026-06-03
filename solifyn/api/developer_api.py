@@ -17,7 +17,16 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
+from pydantic import Field, StrictStr
+from typing import List
+from typing_extensions import Annotated
+from solifyn.models.api_key_response_dto import ApiKeyResponseDto
+from solifyn.models.app_portal_url_response_dto import AppPortalUrlResponseDto
+from solifyn.models.create_api_key_dto import CreateApiKeyDto
+from solifyn.models.create_webhook_endpoint_dto import CreateWebhookEndpointDto
+from solifyn.models.update_webhook_endpoint_dto import UpdateWebhookEndpointDto
+from solifyn.models.webhook_delivery_response_dto import WebhookDeliveryResponseDto
+from solifyn.models.webhook_endpoint_response_dto import WebhookEndpointResponseDto
 
 from solifyn.api_client import ApiClient, RequestSerialized
 from solifyn.api_response import ApiResponse
@@ -38,8 +47,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_api_key(
+    def developer_create_api_key(
         self,
+        create_api_key_dto: CreateApiKeyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -52,10 +62,12 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_create_api_key
+    ) -> ApiKeyResponseDto:
+        """Create Developer API Key
 
 
+        :param create_api_key_dto: (required)
+        :type create_api_key_dto: CreateApiKeyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -78,7 +90,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_api_key_serialize(
+        _param = self._developer_create_api_key_serialize(
+            create_api_key_dto=create_api_key_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -86,7 +99,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "ApiKeyResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -100,8 +113,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_api_key_with_http_info(
+    def developer_create_api_key_with_http_info(
         self,
+        create_api_key_dto: CreateApiKeyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -114,10 +128,12 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_create_api_key
+    ) -> ApiResponse[ApiKeyResponseDto]:
+        """Create Developer API Key
 
 
+        :param create_api_key_dto: (required)
+        :type create_api_key_dto: CreateApiKeyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -140,7 +156,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_api_key_serialize(
+        _param = self._developer_create_api_key_serialize(
+            create_api_key_dto=create_api_key_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -148,7 +165,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "ApiKeyResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -162,8 +179,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_api_key_without_preload_content(
+    def developer_create_api_key_without_preload_content(
         self,
+        create_api_key_dto: CreateApiKeyDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -177,9 +195,11 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_create_api_key
+        """Create Developer API Key
 
 
+        :param create_api_key_dto: (required)
+        :type create_api_key_dto: CreateApiKeyDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -202,7 +222,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_api_key_serialize(
+        _param = self._developer_create_api_key_serialize(
+            create_api_key_dto=create_api_key_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -210,7 +231,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "ApiKeyResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -219,8 +240,9 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_create_api_key_serialize(
+    def _developer_create_api_key_serialize(
         self,
+        create_api_key_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -246,9 +268,31 @@ class DeveloperApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if create_api_key_dto is not None:
+            _body_params = create_api_key_dto
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -273,8 +317,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_webhook_endpoint(
+    def developer_create_webhook(
         self,
+        create_webhook_endpoint_dto: CreateWebhookEndpointDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -287,10 +332,12 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_create_webhook_endpoint
+    ) -> WebhookEndpointResponseDto:
+        """Create Webhook Endpoint
 
 
+        :param create_webhook_endpoint_dto: (required)
+        :type create_webhook_endpoint_dto: CreateWebhookEndpointDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -313,7 +360,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_webhook_endpoint_serialize(
+        _param = self._developer_create_webhook_serialize(
+            create_webhook_endpoint_dto=create_webhook_endpoint_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -321,7 +369,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -335,8 +383,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_webhook_endpoint_with_http_info(
+    def developer_create_webhook_with_http_info(
         self,
+        create_webhook_endpoint_dto: CreateWebhookEndpointDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,10 +398,12 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_create_webhook_endpoint
+    ) -> ApiResponse[WebhookEndpointResponseDto]:
+        """Create Webhook Endpoint
 
 
+        :param create_webhook_endpoint_dto: (required)
+        :type create_webhook_endpoint_dto: CreateWebhookEndpointDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,7 +426,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_webhook_endpoint_serialize(
+        _param = self._developer_create_webhook_serialize(
+            create_webhook_endpoint_dto=create_webhook_endpoint_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -383,7 +435,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -397,8 +449,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_create_webhook_endpoint_without_preload_content(
+    def developer_create_webhook_without_preload_content(
         self,
+        create_webhook_endpoint_dto: CreateWebhookEndpointDto,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -412,9 +465,11 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_create_webhook_endpoint
+        """Create Webhook Endpoint
 
 
+        :param create_webhook_endpoint_dto: (required)
+        :type create_webhook_endpoint_dto: CreateWebhookEndpointDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -437,7 +492,8 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_create_webhook_endpoint_serialize(
+        _param = self._developer_create_webhook_serialize(
+            create_webhook_endpoint_dto=create_webhook_endpoint_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -445,7 +501,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
+            '201': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -454,8 +510,9 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_create_webhook_endpoint_serialize(
+    def _developer_create_webhook_serialize(
         self,
+        create_webhook_endpoint_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -481,9 +538,31 @@ class DeveloperApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if create_webhook_endpoint_dto is not None:
+            _body_params = create_webhook_endpoint_dto
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -508,9 +587,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_delete_api_key(
+    def developer_delete_webhook(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -524,10 +603,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """developer_controller_delete_api_key
+        """Delete Webhook Endpoint
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -551,7 +630,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_delete_api_key_serialize(
+        _param = self._developer_delete_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -574,9 +653,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_delete_api_key_with_http_info(
+    def developer_delete_webhook_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -590,10 +669,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """developer_controller_delete_api_key
+        """Delete Webhook Endpoint
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -617,7 +696,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_delete_api_key_serialize(
+        _param = self._developer_delete_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -640,9 +719,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_delete_api_key_without_preload_content(
+    def developer_delete_webhook_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -656,10 +735,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_delete_api_key
+        """Delete Webhook Endpoint
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -683,7 +762,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_delete_api_key_serialize(
+        _param = self._developer_delete_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -701,257 +780,7 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_delete_api_key_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/v1/developer/api-keys/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def developer_controller_delete_webhook_endpoint(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_delete_webhook_endpoint
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_delete_webhook_endpoint_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def developer_controller_delete_webhook_endpoint_with_http_info(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_delete_webhook_endpoint
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_delete_webhook_endpoint_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def developer_controller_delete_webhook_endpoint_without_preload_content(
-        self,
-        id: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """developer_controller_delete_webhook_endpoint
-
-
-        :param id: (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_delete_webhook_endpoint_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _developer_controller_delete_webhook_endpoint_serialize(
+    def _developer_delete_webhook_serialize(
         self,
         id,
         _request_auth,
@@ -1008,7 +837,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_api_keys(
+    def developer_get_app_portal(
         self,
         _request_timeout: Union[
             None,
@@ -1022,8 +851,8 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_get_api_keys
+    ) -> AppPortalUrlResponseDto:
+        """Retrieve Hosted Webhooks Portal URL
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1048,7 +877,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_api_keys_serialize(
+        _param = self._developer_get_app_portal_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1056,7 +885,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "AppPortalUrlResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1070,7 +899,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_api_keys_with_http_info(
+    def developer_get_app_portal_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1084,8 +913,8 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_get_api_keys
+    ) -> ApiResponse[AppPortalUrlResponseDto]:
+        """Retrieve Hosted Webhooks Portal URL
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1110,7 +939,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_api_keys_serialize(
+        _param = self._developer_get_app_portal_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1118,7 +947,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "AppPortalUrlResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1132,7 +961,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_api_keys_without_preload_content(
+    def developer_get_app_portal_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1147,7 +976,7 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_get_api_keys
+        """Retrieve Hosted Webhooks Portal URL
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1172,7 +1001,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_api_keys_serialize(
+        _param = self._developer_get_app_portal_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1180,7 +1009,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "AppPortalUrlResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1189,7 +1018,7 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_get_api_keys_serialize(
+    def _developer_get_app_portal_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1218,241 +1047,13 @@ class DeveloperApi:
         # process the body parameter
 
 
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/developer/api-keys',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def developer_controller_get_app_portal_url(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_get_app_portal_url
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_get_app_portal_url_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def developer_controller_get_app_portal_url_with_http_info(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_get_app_portal_url
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_get_app_portal_url_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def developer_controller_get_app_portal_url_without_preload_content(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """developer_controller_get_app_portal_url
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._developer_controller_get_app_portal_url_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _developer_controller_get_app_portal_url_serialize(
-        self,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -1478,9 +1079,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_deliveries(
+    def developer_get_webhook(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1493,11 +1094,11 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_get_webhook_deliveries
+    ) -> WebhookEndpointResponseDto:
+        """Retrieve Webhook Endpoint Details
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1521,7 +1122,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_deliveries_serialize(
+        _param = self._developer_get_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1530,7 +1131,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1544,9 +1145,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_deliveries_with_http_info(
+    def developer_get_webhook_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1559,11 +1160,11 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_get_webhook_deliveries
+    ) -> ApiResponse[WebhookEndpointResponseDto]:
+        """Retrieve Webhook Endpoint Details
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1587,7 +1188,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_deliveries_serialize(
+        _param = self._developer_get_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1596,7 +1197,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1610,9 +1211,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_deliveries_without_preload_content(
+    def developer_get_webhook_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1626,10 +1227,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_get_webhook_deliveries
+        """Retrieve Webhook Endpoint Details
 
 
-        :param id: (required)
+        :param id: The webhook endpoint ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1653,7 +1254,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_deliveries_serialize(
+        _param = self._developer_get_webhook_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1662,7 +1263,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "WebhookEndpointResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1671,7 +1272,7 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_get_webhook_deliveries_serialize(
+    def _developer_get_webhook_serialize(
         self,
         id,
         _request_auth,
@@ -1703,6 +1304,512 @@ class DeveloperApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/developer/webhooks/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def developer_list_api_keys(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[ApiKeyResponseDto]:
+        """List Developer API Keys
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_api_keys_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[ApiKeyResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def developer_list_api_keys_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[ApiKeyResponseDto]]:
+        """List Developer API Keys
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_api_keys_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[ApiKeyResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def developer_list_api_keys_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Developer API Keys
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_api_keys_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[ApiKeyResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _developer_list_api_keys_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/developer/api-keys',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def developer_list_webhook_deliveries(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[WebhookDeliveryResponseDto]:
+        """Retrieve Webhook Delivery Logs
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_webhook_deliveries_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WebhookDeliveryResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def developer_list_webhook_deliveries_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[WebhookDeliveryResponseDto]]:
+        """Retrieve Webhook Delivery Logs
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_webhook_deliveries_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WebhookDeliveryResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def developer_list_webhook_deliveries_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve Webhook Delivery Logs
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_list_webhook_deliveries_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[WebhookDeliveryResponseDto]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _developer_list_webhook_deliveries_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -1728,7 +1835,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_endpoints(
+    def developer_list_webhooks(
         self,
         _request_timeout: Union[
             None,
@@ -1742,8 +1849,8 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """developer_controller_get_webhook_endpoints
+    ) -> List[WebhookEndpointResponseDto]:
+        """List Webhook Endpoints
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1768,7 +1875,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_endpoints_serialize(
+        _param = self._developer_list_webhooks_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1776,7 +1883,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[WebhookEndpointResponseDto]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1790,7 +1897,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_endpoints_with_http_info(
+    def developer_list_webhooks_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1804,8 +1911,8 @@ class DeveloperApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """developer_controller_get_webhook_endpoints
+    ) -> ApiResponse[List[WebhookEndpointResponseDto]]:
+        """List Webhook Endpoints
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1830,7 +1937,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_endpoints_serialize(
+        _param = self._developer_list_webhooks_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1838,7 +1945,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[WebhookEndpointResponseDto]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1852,7 +1959,7 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_get_webhook_endpoints_without_preload_content(
+    def developer_list_webhooks_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1867,7 +1974,7 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_get_webhook_endpoints
+        """List Webhook Endpoints
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -1892,7 +1999,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_get_webhook_endpoints_serialize(
+        _param = self._developer_list_webhooks_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1900,7 +2007,7 @@ class DeveloperApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
+            '200': "List[WebhookEndpointResponseDto]",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1909,7 +2016,7 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_get_webhook_endpoints_serialize(
+    def _developer_list_webhooks_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1938,6 +2045,13 @@ class DeveloperApi:
         # process the body parameter
 
 
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
 
 
         # authentication setting
@@ -1963,9 +2077,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_update_webhook_endpoint(
+    def developer_revoke_api_key(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The API key ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1979,10 +2093,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """developer_controller_update_webhook_endpoint
+        """Revoke API Key
 
 
-        :param id: (required)
+        :param id: The API key ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2006,7 +2120,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_update_webhook_endpoint_serialize(
+        _param = self._developer_revoke_api_key_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2029,9 +2143,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_update_webhook_endpoint_with_http_info(
+    def developer_revoke_api_key_with_http_info(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The API key ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2045,10 +2159,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """developer_controller_update_webhook_endpoint
+        """Revoke API Key
 
 
-        :param id: (required)
+        :param id: The API key ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2072,7 +2186,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_update_webhook_endpoint_serialize(
+        _param = self._developer_revoke_api_key_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2095,9 +2209,9 @@ class DeveloperApi:
 
 
     @validate_call
-    def developer_controller_update_webhook_endpoint_without_preload_content(
+    def developer_revoke_api_key_without_preload_content(
         self,
-        id: StrictStr,
+        id: Annotated[StrictStr, Field(description="The API key ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2111,10 +2225,10 @@ class DeveloperApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """developer_controller_update_webhook_endpoint
+        """Revoke API Key
 
 
-        :param id: (required)
+        :param id: The API key ID (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2138,7 +2252,7 @@ class DeveloperApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._developer_controller_update_webhook_endpoint_serialize(
+        _param = self._developer_revoke_api_key_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2156,7 +2270,7 @@ class DeveloperApi:
         return response_data.response
 
 
-    def _developer_controller_update_webhook_endpoint_serialize(
+    def _developer_revoke_api_key_serialize(
         self,
         id,
         _request_auth,
@@ -2189,6 +2303,291 @@ class DeveloperApi:
 
 
 
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v1/developer/api-keys/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def developer_update_webhook(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        update_webhook_endpoint_dto: UpdateWebhookEndpointDto,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> WebhookEndpointResponseDto:
+        """Update Webhook Endpoint
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param update_webhook_endpoint_dto: (required)
+        :type update_webhook_endpoint_dto: UpdateWebhookEndpointDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_update_webhook_serialize(
+            id=id,
+            update_webhook_endpoint_dto=update_webhook_endpoint_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "WebhookEndpointResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def developer_update_webhook_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        update_webhook_endpoint_dto: UpdateWebhookEndpointDto,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[WebhookEndpointResponseDto]:
+        """Update Webhook Endpoint
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param update_webhook_endpoint_dto: (required)
+        :type update_webhook_endpoint_dto: UpdateWebhookEndpointDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_update_webhook_serialize(
+            id=id,
+            update_webhook_endpoint_dto=update_webhook_endpoint_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "WebhookEndpointResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def developer_update_webhook_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="The webhook endpoint ID")],
+        update_webhook_endpoint_dto: UpdateWebhookEndpointDto,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update Webhook Endpoint
+
+
+        :param id: The webhook endpoint ID (required)
+        :type id: str
+        :param update_webhook_endpoint_dto: (required)
+        :type update_webhook_endpoint_dto: UpdateWebhookEndpointDto
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._developer_update_webhook_serialize(
+            id=id,
+            update_webhook_endpoint_dto=update_webhook_endpoint_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "WebhookEndpointResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _developer_update_webhook_serialize(
+        self,
+        id,
+        update_webhook_endpoint_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if update_webhook_endpoint_dto is not None:
+            _body_params = update_webhook_endpoint_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
