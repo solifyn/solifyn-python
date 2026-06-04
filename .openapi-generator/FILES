@@ -325,6 +325,4 @@ solifyn/py.typed
 solifyn/rest.py
 test-requirements.txt
 test/__init__.py
-test/test_create_setup_checkout_dto.py
-test/test_refund_requests_api.py
 tox.ini

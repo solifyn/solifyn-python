@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "solifyn"
+NAME = "solifyn-python"
 VERSION = "1.0.0"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
@@ -37,7 +37,7 @@ setup(
     description="Solifyn API",
     author="OpenAPI Generator community",
     author_email="support@solifyn.com",
-    url="https://github.com/fyntechsolution-ux/solifyn-python",
+    url="https://github.com/solifyn/solifyn-python",
     keywords=["OpenAPI", "OpenAPI-Generator", "Solifyn API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
