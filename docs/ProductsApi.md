@@ -1,6 +1,6 @@
 # solifyn.ProductsApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,10 +29,10 @@ from solifyn.models.products_archive200_response import ProductsArchive200Respon
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -108,10 +108,10 @@ from solifyn.models.product_create import ProductCreate
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -186,10 +186,10 @@ from solifyn.models.product import Product
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -264,10 +264,10 @@ from solifyn.models.products_list200_response import ProductsList200Response
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -356,10 +356,10 @@ from solifyn.models.products_unarchive200_response import ProductsUnarchive200Re
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -435,10 +435,10 @@ from solifyn.models.product_update import ProductUpdate
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters

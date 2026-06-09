@@ -1,6 +1,6 @@
 # solifyn.LicenseKeysApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,10 +34,10 @@ from solifyn.models.licenses_create_request import LicensesCreateRequest
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -112,10 +112,10 @@ from solifyn.models.instance import Instance
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -190,10 +190,10 @@ from solifyn.models.license import License
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -268,10 +268,10 @@ from solifyn.models.instance import Instance
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -348,10 +348,10 @@ from solifyn.models.instance import Instance
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -426,10 +426,10 @@ from solifyn.models.license import License
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -500,10 +500,10 @@ from solifyn.models.license import License
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -579,10 +579,10 @@ from solifyn.models.licenses_update_request import LicensesUpdateRequest
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -660,10 +660,10 @@ from solifyn.models.licenses_update_instance_post_request import LicensesUpdateI
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -743,10 +743,10 @@ from solifyn.models.licenses_update_instance_post_request import LicensesUpdateI
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -1,6 +1,6 @@
 # solifyn.CustomersApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,10 +29,10 @@ from solifyn.models.customer_response_dto import CustomerResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,10 +107,10 @@ from solifyn.models.customer_shared_invite_response_dto import CustomerSharedInv
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -185,10 +185,10 @@ from solifyn.models.customer_response_dto import CustomerResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -263,10 +263,10 @@ from solifyn.models.customer_list_response_dto import CustomerListResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -338,10 +338,10 @@ from solifyn.models.update_customer_dto import UpdateCustomerDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters

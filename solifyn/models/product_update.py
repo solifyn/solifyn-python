@@ -38,6 +38,9 @@ class ProductUpdate(BaseModel):
     discount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Percentage or flat rate discount.")
     has_license_key: Optional[StrictBool] = Field(default=False, description="Whether to automatically issue license keys upon successful orders.", alias="hasLicenseKey")
     has_digital_delivery: Optional[StrictBool] = Field(default=False, description="Whether the purchase includes downloadable files.", alias="hasDigitalDelivery")
+    has_github_access: Optional[StrictBool] = Field(default=False, description="Whether the purchase includes GitHub repository access.", alias="hasGithubAccess")
+    github_repo: Optional[StrictStr] = Field(default=None, description="GitHub repository to grant access to (format: owner/repo).", alias="githubRepo")
+    github_permission: Optional[StrictStr] = Field(default=None, description="GitHub collaborator permission level.", alias="githubPermission")
     is_tax_inclusive: Optional[StrictBool] = Field(default=False, description="Whether tax is included in the base price.", alias="isTaxInclusive")
     activation_limit: Optional[StrictInt] = Field(default=None, description="Maximum concurrent activated instances allowed per license key.", alias="activationLimit")
     brand_id: Optional[StrictStr] = Field(default=None, description="Brand id for the product, if not provided will default to primary brand.", alias="brandId")
@@ -52,7 +55,7 @@ class ProductUpdate(BaseModel):
     is_listed: Optional[StrictBool] = Field(default=True, description="Whether the product is publicly visible.", alias="isListed")
     is_free: Optional[StrictBool] = Field(default=False, description="Whether the product is free of charge.", alias="isFree")
     addons: Optional[List[ProductCreateAddonsInner]] = Field(default=None, description="Product addons configurations.")
-    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons"]
+    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons"]
 
     @field_validator('currency')
     def currency_validate_enum(cls, value):
@@ -72,6 +75,16 @@ class ProductUpdate(BaseModel):
 
         if value not in set(['digital_products', 'saas', 'physical_products', 'service']):
             raise ValueError("must be one of enum values ('digital_products', 'saas', 'physical_products', 'service')")
+        return value
+
+    @field_validator('github_permission')
+    def github_permission_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['pull', 'triage', 'push', 'maintain', 'admin']):
+            raise ValueError("must be one of enum values ('pull', 'triage', 'push', 'maintain', 'admin')")
         return value
 
     model_config = ConfigDict(
@@ -148,6 +161,9 @@ class ProductUpdate(BaseModel):
             "discount": obj.get("discount"),
             "hasLicenseKey": obj.get("hasLicenseKey") if obj.get("hasLicenseKey") is not None else False,
             "hasDigitalDelivery": obj.get("hasDigitalDelivery") if obj.get("hasDigitalDelivery") is not None else False,
+            "hasGithubAccess": obj.get("hasGithubAccess") if obj.get("hasGithubAccess") is not None else False,
+            "githubRepo": obj.get("githubRepo"),
+            "githubPermission": obj.get("githubPermission"),
             "isTaxInclusive": obj.get("isTaxInclusive") if obj.get("isTaxInclusive") is not None else False,
             "activationLimit": obj.get("activationLimit"),
             "brandId": obj.get("brandId"),

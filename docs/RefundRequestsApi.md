@@ -1,6 +1,6 @@
 # solifyn.RefundRequestsApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -24,10 +24,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 
@@ -83,10 +83,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 
@@ -146,10 +146,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 
@@ -209,10 +209,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 
@@ -272,10 +272,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 

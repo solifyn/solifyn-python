@@ -1,6 +1,6 @@
 # solifyn.MetersApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,10 +31,10 @@ from solifyn.models.meter_ingest_response_dto import MeterIngestResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -110,10 +110,10 @@ from solifyn.models.meter_response_dto import MeterResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -188,10 +188,10 @@ from solifyn.models.meter_detail_response_dto import MeterDetailResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -270,10 +270,10 @@ from solifyn.models.meter_events_response_dto import MeterEventsResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -350,10 +350,10 @@ from solifyn.models.meter_quantities_response_dto import MeterQuantitiesResponse
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -432,10 +432,10 @@ from solifyn.models.meter_response_dto import MeterResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -511,10 +511,10 @@ from solifyn.models.update_meter_dto import UpdateMeterDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 # The client must configure the authentication and authorization parameters

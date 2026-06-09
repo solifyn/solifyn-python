@@ -62,6 +62,10 @@ docs/DisputeFileUpload.md
 docs/DisputeList.md
 docs/DisputeListMetaDto.md
 docs/DisputesApi.md
+docs/EntitlementGrantResponseDto.md
+docs/EntitlementGrantsApi.md
+docs/GitHubIntegrationApi.md
+docs/GithubReposResponseDto.md
 docs/Instance.md
 docs/Invoice.md
 docs/License.md
@@ -139,6 +143,7 @@ docs/SubscriptionUserDto.md
 docs/SubscriptionsAction201Response.md
 docs/SubscriptionsApi.md
 docs/SupportedCurrenciesResponseDto.md
+docs/SyncLoginDto.md
 docs/UpdateCheckoutLinkDto.md
 docs/UpdateCollectionDto.md
 docs/UpdateCollectionProductDto.md
@@ -173,6 +178,8 @@ solifyn/api/developer_api.py
 solifyn/api/digital_file_api.py
 solifyn/api/discounts_api.py
 solifyn/api/disputes_api.py
+solifyn/api/entitlement_grants_api.py
+solifyn/api/git_hub_integration_api.py
 solifyn/api/license_api.py
 solifyn/api/license_keys_api.py
 solifyn/api/license_keys_client_api.py
@@ -239,6 +246,8 @@ solifyn/models/dispute_evidence_update.py
 solifyn/models/dispute_file_upload.py
 solifyn/models/dispute_list.py
 solifyn/models/dispute_list_meta_dto.py
+solifyn/models/entitlement_grant_response_dto.py
+solifyn/models/github_repos_response_dto.py
 solifyn/models/instance.py
 solifyn/models/invoice.py
 solifyn/models/license.py
@@ -306,6 +315,7 @@ solifyn/models/subscription_seat_adjustment.py
 solifyn/models/subscription_user_dto.py
 solifyn/models/subscriptions_action201_response.py
 solifyn/models/supported_currencies_response_dto.py
+solifyn/models/sync_login_dto.py
 solifyn/models/update_checkout_link_dto.py
 solifyn/models/update_collection_dto.py
 solifyn/models/update_collection_product_dto.py

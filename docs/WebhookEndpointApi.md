@@ -1,6 +1,6 @@
 # solifyn.WebhookEndpointApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,6 +22,7 @@ Create Operational Webhook Endpoint
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -30,12 +31,21 @@ from solifyn.models.operational_webhook_endpoint_response_dto import Operational
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -67,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -89,18 +99,28 @@ Delete Operational Webhook Endpoint
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -130,7 +150,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -152,6 +172,7 @@ Get Operational Webhook Endpoint
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -159,12 +180,21 @@ from solifyn.models.operational_webhook_endpoint_response_dto import Operational
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -196,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -218,6 +248,7 @@ Get Operational Webhook Endpoint Headers
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -225,12 +256,21 @@ from solifyn.models.operational_webhook_endpoint_headers_response_dto import Ope
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -262,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -284,6 +324,7 @@ Get Operational Webhook Endpoint Secret
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -291,12 +332,21 @@ from solifyn.models.operational_webhook_endpoint_secret_response_dto import Oper
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -328,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -350,6 +400,7 @@ List Operational Webhook Endpoints
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -357,12 +408,21 @@ from solifyn.models.operational_webhook_endpoint_list_response_dto import Operat
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -390,7 +450,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -412,6 +472,7 @@ Rotate Operational Webhook Endpoint Secret
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -419,12 +480,21 @@ from solifyn.models.operational_webhook_endpoint_secret_in_dto import Operationa
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -456,7 +526,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -478,6 +548,7 @@ Update Operational Webhook Endpoint
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -486,12 +557,21 @@ from solifyn.models.operational_webhook_endpoint_update_dto import OperationalWe
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -525,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -547,6 +627,7 @@ Set Operational Webhook Endpoint Headers
 
 ### Example
 
+* Bearer (API Key) Authentication (ApiKeyAuth):
 
 ```python
 import solifyn
@@ -554,12 +635,21 @@ from solifyn.models.operational_webhook_endpoint_headers_in_dto import Operation
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
@@ -591,7 +681,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

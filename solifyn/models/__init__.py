@@ -64,6 +64,8 @@ from solifyn.models.dispute_evidence_update import DisputeEvidenceUpdate
 from solifyn.models.dispute_file_upload import DisputeFileUpload
 from solifyn.models.dispute_list import DisputeList
 from solifyn.models.dispute_list_meta_dto import DisputeListMetaDto
+from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
+from solifyn.models.github_repos_response_dto import GithubReposResponseDto
 from solifyn.models.instance import Instance
 from solifyn.models.invoice import Invoice
 from solifyn.models.license import License
@@ -131,6 +133,7 @@ from solifyn.models.subscription_seat_adjustment import SubscriptionSeatAdjustme
 from solifyn.models.subscription_user_dto import SubscriptionUserDto
 from solifyn.models.subscriptions_action201_response import SubscriptionsAction201Response
 from solifyn.models.supported_currencies_response_dto import SupportedCurrenciesResponseDto
+from solifyn.models.sync_login_dto import SyncLoginDto
 from solifyn.models.update_checkout_link_dto import UpdateCheckoutLinkDto
 from solifyn.models.update_collection_dto import UpdateCollectionDto
 from solifyn.models.update_collection_product_dto import UpdateCollectionProductDto

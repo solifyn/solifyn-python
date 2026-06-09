@@ -39,7 +39,8 @@ class CheckoutSessionDetailsDto(BaseModel):
     payment_id: Optional[StrictStr] = Field(default=None, description="Database payment transaction ID", alias="paymentId")
     checkout_url: Optional[StrictStr] = Field(default=None, description="Checkout session redirect URL if loaded in link mode", alias="checkoutUrl")
     product: Optional[Product] = Field(default=None, description="The details of the product being purchased")
-    __properties: ClassVar[List[str]] = ["id", "price", "currency", "storeName", "status", "billingAddress", "customFields", "session_id", "paymentId", "checkoutUrl", "product"]
+    entitlement_grants: Optional[List[Dict[str, Any]]] = Field(default=None, description="List of entitlement grants (e.g. GitHub repo invites) associated with this checkout.", alias="entitlementGrants")
+    __properties: ClassVar[List[str]] = ["id", "price", "currency", "storeName", "status", "billingAddress", "customFields", "session_id", "paymentId", "checkoutUrl", "product", "entitlementGrants"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,7 +106,8 @@ class CheckoutSessionDetailsDto(BaseModel):
             "session_id": obj.get("session_id"),
             "paymentId": obj.get("paymentId"),
             "checkoutUrl": obj.get("checkoutUrl"),
-            "product": Product.from_dict(obj["product"]) if obj.get("product") is not None else None
+            "product": Product.from_dict(obj["product"]) if obj.get("product") is not None else None,
+            "entitlementGrants": obj.get("entitlementGrants")
         })
         return _obj
 

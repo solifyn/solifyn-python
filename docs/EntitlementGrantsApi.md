@@ -1,21 +1,21 @@
-# solifyn.LicenseKeysClientApi
+# solifyn.EntitlementGrantsApi
 
 All URIs are relative to *https://api.solifyn.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**licenses_activate**](LicenseKeysClientApi.md#licenses_activate) | **POST** /v1/licenses/activate | Activate License Key
-[**licenses_deactivate**](LicenseKeysClientApi.md#licenses_deactivate) | **POST** /v1/licenses/deactivate/{instanceId} | Deactivate Instance
-[**licenses_instances**](LicenseKeysClientApi.md#licenses_instances) | **GET** /v1/licenses/instances/{licenseId} | Get Active Instances
-[**licenses_verify**](LicenseKeysClientApi.md#licenses_verify) | **POST** /v1/licenses/verify | Validate License Key
+[**entitlement_grants_get**](EntitlementGrantsApi.md#entitlement_grants_get) | **GET** /v1/entitlement-grants/{id} | Retrieve Entitlement Grant
+[**entitlement_grants_list**](EntitlementGrantsApi.md#entitlement_grants_list) | **GET** /v1/entitlement-grants | List Entitlement Grants
+[**entitlement_grants_retry**](EntitlementGrantsApi.md#entitlement_grants_retry) | **POST** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery
+[**entitlement_grants_revoke**](EntitlementGrantsApi.md#entitlement_grants_revoke) | **POST** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant
 
 
-# **licenses_activate**
-> Instance licenses_activate(licenses_activate_request)
+# **entitlement_grants_get**
+> EntitlementGrantResponseDto entitlement_grants_get(id)
 
-Activate License Key
+Retrieve Entitlement Grant
 
-Register and activate a device or instance for a specific license key.
+Retrieve details of a specific entitlement grant.
 
 ### Example
 
@@ -23,8 +23,7 @@ Register and activate a device or instance for a specific license key.
 
 ```python
 import solifyn
-from solifyn.models.instance import Instance
-from solifyn.models.licenses_activate_request import LicensesActivateRequest
+from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
@@ -47,16 +46,16 @@ configuration = solifyn.Configuration(
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = solifyn.LicenseKeysClientApi(api_client)
-    licenses_activate_request = solifyn.LicensesActivateRequest() # LicensesActivateRequest | 
+    api_instance = solifyn.EntitlementGrantsApi(api_client)
+    id = 'id_example' # str | The unique grant ID
 
     try:
-        # Activate License Key
-        api_response = api_instance.licenses_activate(licenses_activate_request)
-        print("The response of LicenseKeysClientApi->licenses_activate:\n")
+        # Retrieve Entitlement Grant
+        api_response = api_instance.entitlement_grants_get(id)
+        print("The response of EntitlementGrantsApi->entitlement_grants_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LicenseKeysClientApi->licenses_activate: %s\n" % e)
+        print("Exception when calling EntitlementGrantsApi->entitlement_grants_get: %s\n" % e)
 ```
 
 
@@ -66,170 +65,11 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenses_activate_request** | [**LicensesActivateRequest**](LicensesActivateRequest.md)|  | 
+ **id** | **str**| The unique grant ID | 
 
 ### Return type
 
-[**Instance**](Instance.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Activation successful. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **licenses_deactivate**
-> LicensesDeactivate200Response licenses_deactivate(instance_id, licenses_deactivate_request)
-
-Deactivate Instance
-
-Deactivate or unregister an active device instance from a license key.
-
-### Example
-
-* Bearer (API Key) Authentication (ApiKeyAuth):
-
-```python
-import solifyn
-from solifyn.models.licenses_deactivate200_response import LicensesDeactivate200Response
-from solifyn.models.licenses_deactivate_request import LicensesDeactivateRequest
-from solifyn.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.solifyn.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = solifyn.Configuration(
-    host = "https://api.solifyn.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (API Key): ApiKeyAuth
-configuration = solifyn.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with solifyn.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = solifyn.LicenseKeysClientApi(api_client)
-    instance_id = 'instance_id_example' # str | The unique device instance ID.
-    licenses_deactivate_request = solifyn.LicensesDeactivateRequest() # LicensesDeactivateRequest | 
-
-    try:
-        # Deactivate Instance
-        api_response = api_instance.licenses_deactivate(instance_id, licenses_deactivate_request)
-        print("The response of LicenseKeysClientApi->licenses_deactivate:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling LicenseKeysClientApi->licenses_deactivate: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **instance_id** | **str**| The unique device instance ID. | 
- **licenses_deactivate_request** | [**LicensesDeactivateRequest**](LicensesDeactivateRequest.md)|  | 
-
-### Return type
-
-[**LicensesDeactivate200Response**](LicensesDeactivate200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Instance deactivated successfully. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **licenses_instances**
-> List[Instance] licenses_instances(license_id)
-
-Get Active Instances
-
-List all active devices or server instances linked to a specific license key.
-
-### Example
-
-* Bearer (API Key) Authentication (ApiKeyAuth):
-
-```python
-import solifyn
-from solifyn.models.instance import Instance
-from solifyn.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.solifyn.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = solifyn.Configuration(
-    host = "https://api.solifyn.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (API Key): ApiKeyAuth
-configuration = solifyn.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with solifyn.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = solifyn.LicenseKeysClientApi(api_client)
-    license_id = 'license_id_example' # str | The unique license key ID.
-
-    try:
-        # Get Active Instances
-        api_response = api_instance.licenses_instances(license_id)
-        print("The response of LicenseKeysClientApi->licenses_instances:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling LicenseKeysClientApi->licenses_instances: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **license_id** | **str**| The unique license key ID. | 
-
-### Return type
-
-[**List[Instance]**](Instance.md)
+[**EntitlementGrantResponseDto**](EntitlementGrantResponseDto.md)
 
 ### Authorization
 
@@ -244,16 +84,16 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully retrieved active instances. |  -  |
+**200** | Details of the grant. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **licenses_verify**
-> LicenseValidationResponse licenses_verify(licenses_verify_request)
+# **entitlement_grants_list**
+> List[EntitlementGrantResponseDto] entitlement_grants_list(status=status)
 
-Validate License Key
+List Entitlement Grants
 
-Verify if a software license key is valid, active, and has not exceeded its limits.
+Retrieve all GitHub repository entitlement grants for the active business.
 
 ### Example
 
@@ -261,8 +101,7 @@ Verify if a software license key is valid, active, and has not exceeded its limi
 
 ```python
 import solifyn
-from solifyn.models.license_validation_response import LicenseValidationResponse
-from solifyn.models.licenses_verify_request import LicensesVerifyRequest
+from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
 from solifyn.rest import ApiException
 from pprint import pprint
 
@@ -285,16 +124,16 @@ configuration = solifyn.Configuration(
 # Enter a context with an instance of the API client
 with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = solifyn.LicenseKeysClientApi(api_client)
-    licenses_verify_request = solifyn.LicensesVerifyRequest() # LicensesVerifyRequest | 
+    api_instance = solifyn.EntitlementGrantsApi(api_client)
+    status = 'status_example' # str | Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
 
     try:
-        # Validate License Key
-        api_response = api_instance.licenses_verify(licenses_verify_request)
-        print("The response of LicenseKeysClientApi->licenses_verify:\n")
+        # List Entitlement Grants
+        api_response = api_instance.entitlement_grants_list(status=status)
+        print("The response of EntitlementGrantsApi->entitlement_grants_list:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LicenseKeysClientApi->licenses_verify: %s\n" % e)
+        print("Exception when calling EntitlementGrantsApi->entitlement_grants_list: %s\n" % e)
 ```
 
 
@@ -304,11 +143,11 @@ with solifyn.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenses_verify_request** | [**LicensesVerifyRequest**](LicensesVerifyRequest.md)|  | 
+ **status** | **str**| Filter by status (PENDING, DELIVERED, FAILED, REVOKED) | [optional] 
 
 ### Return type
 
-[**LicenseValidationResponse**](LicenseValidationResponse.md)
+[**List[EntitlementGrantResponseDto]**](EntitlementGrantResponseDto.md)
 
 ### Authorization
 
@@ -316,14 +155,170 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | License is valid. |  -  |
+**200** | Successfully retrieved list of grants. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grants_retry**
+> EntitlementGrantResponseDto entitlement_grants_retry(id)
+
+Retry Entitlement Grant Delivery
+
+Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.EntitlementGrantsApi(api_client)
+    id = 'id_example' # str | The unique grant ID
+
+    try:
+        # Retry Entitlement Grant Delivery
+        api_response = api_instance.entitlement_grants_retry(id)
+        print("The response of EntitlementGrantsApi->entitlement_grants_retry:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EntitlementGrantsApi->entitlement_grants_retry: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The unique grant ID | 
+
+### Return type
+
+[**EntitlementGrantResponseDto**](EntitlementGrantResponseDto.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Grant delivery retried. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grants_revoke**
+> EntitlementGrantResponseDto entitlement_grants_revoke(id)
+
+Manually Revoke Entitlement Grant
+
+Manually remove the customer collaborator access from the repository and revoke the grant.
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.EntitlementGrantsApi(api_client)
+    id = 'id_example' # str | The unique grant ID
+
+    try:
+        # Manually Revoke Entitlement Grant
+        api_response = api_instance.entitlement_grants_revoke(id)
+        print("The response of EntitlementGrantsApi->entitlement_grants_revoke:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EntitlementGrantsApi->entitlement_grants_revoke: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The unique grant ID | 
+
+### Return type
+
+[**EntitlementGrantResponseDto**](EntitlementGrantResponseDto.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Grant successfully revoked. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

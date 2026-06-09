@@ -40,6 +40,9 @@ class CollectionProductDto(BaseModel):
     discount: Union[StrictFloat, StrictInt] = Field(description="Discount value as a percentage or fixed amount.")
     has_license_key: StrictBool = Field(description="Indicates if the product issues a cryptographically secure software license key upon checkout completion.", alias="hasLicenseKey")
     has_digital_delivery: StrictBool = Field(description="Whether the product includes digital file downloads upon purchase.", alias="hasDigitalDelivery")
+    has_github_access: StrictBool = Field(description="Whether the product includes GitHub repository access.", alias="hasGithubAccess")
+    github_repo: StrictStr = Field(description="GitHub repository to grant access to (format: owner/repo).", alias="githubRepo")
+    github_permission: StrictStr = Field(description="GitHub collaborator permission level.", alias="githubPermission")
     is_tax_inclusive: StrictBool = Field(description="Whether the product price already includes applicable sales taxes.", alias="isTaxInclusive")
     billing_period: StrictInt = Field(description="The subscription billing cycle interval in days (for subscription products).", alias="billingPeriod")
     trial_period_days: StrictInt = Field(description="Trial duration in days for subscription products.", alias="trialPeriodDays")
@@ -62,7 +65,7 @@ class CollectionProductDto(BaseModel):
     expiry_hours: StrictInt = Field(description="Number of hours until the license key expires.", alias="expiryHours")
     business_id: StrictStr = Field(description="The unique identifier of the business owning this product.", alias="businessId")
     quantity: Union[StrictFloat, StrictInt] = Field(description="Quantity of the product in the collection")
-    __properties: ClassVar[List[str]] = ["id", "name", "price", "currency", "description", "status", "imageUrl", "taxCategory", "pricingType", "discount", "hasLicenseKey", "hasDigitalDelivery", "isTaxInclusive", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "activationLimit", "isListed", "isFree", "createdAt", "updatedAt", "isPermanentlyDeleted", "brandId", "digitalLink", "instructions", "activationMessage", "expiryHours", "businessId", "quantity"]
+    __properties: ClassVar[List[str]] = ["id", "name", "price", "currency", "description", "status", "imageUrl", "taxCategory", "pricingType", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "isTaxInclusive", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "activationLimit", "isListed", "isFree", "createdAt", "updatedAt", "isPermanentlyDeleted", "brandId", "digitalLink", "instructions", "activationMessage", "expiryHours", "businessId", "quantity"]
 
     @field_validator('tax_category')
     def tax_category_validate_enum(cls, value):
@@ -76,6 +79,13 @@ class CollectionProductDto(BaseModel):
         """Validates the enum"""
         if value not in set(['usage_based', 'one_time', 'renewal']):
             raise ValueError("must be one of enum values ('usage_based', 'one_time', 'renewal')")
+        return value
+
+    @field_validator('github_permission')
+    def github_permission_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['pull', 'triage', 'push', 'maintain', 'admin']):
+            raise ValueError("must be one of enum values ('pull', 'triage', 'push', 'maintain', 'admin')")
         return value
 
     model_config = ConfigDict(
@@ -141,6 +151,9 @@ class CollectionProductDto(BaseModel):
             "discount": obj.get("discount"),
             "hasLicenseKey": obj.get("hasLicenseKey"),
             "hasDigitalDelivery": obj.get("hasDigitalDelivery"),
+            "hasGithubAccess": obj.get("hasGithubAccess"),
+            "githubRepo": obj.get("githubRepo"),
+            "githubPermission": obj.get("githubPermission"),
             "isTaxInclusive": obj.get("isTaxInclusive"),
             "billingPeriod": obj.get("billingPeriod"),
             "trialPeriodDays": obj.get("trialPeriodDays"),

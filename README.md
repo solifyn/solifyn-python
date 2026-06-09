@@ -56,10 +56,10 @@ import solifyn
 from solifyn.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8000
+# Defining the host is optional and defaults to https://api.solifyn.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = solifyn.Configuration(
-    host = "http://localhost:8000"
+    host = "https://api.solifyn.com"
 )
 
 
@@ -78,7 +78,7 @@ with solifyn.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -136,6 +136,12 @@ Class | Method | HTTP request | Description
 *DisputesApi* | [**disputes_submit_evidence**](docs/DisputesApi.md#disputes_submit_evidence) | **POST** /v1/transactions/disputes/{id}/submit | Submit Dispute Evidence
 *DisputesApi* | [**disputes_update_evidence**](docs/DisputesApi.md#disputes_update_evidence) | **PATCH** /v1/transactions/disputes/{id}/evidence | Update Dispute Evidence
 *DisputesApi* | [**disputes_upload_evidence_file**](docs/DisputesApi.md#disputes_upload_evidence_file) | **POST** /v1/transactions/disputes/upload | Upload Evidence File
+*EntitlementGrantsApi* | [**entitlement_grants_get**](docs/EntitlementGrantsApi.md#entitlement_grants_get) | **GET** /v1/entitlement-grants/{id} | Retrieve Entitlement Grant
+*EntitlementGrantsApi* | [**entitlement_grants_list**](docs/EntitlementGrantsApi.md#entitlement_grants_list) | **GET** /v1/entitlement-grants | List Entitlement Grants
+*EntitlementGrantsApi* | [**entitlement_grants_retry**](docs/EntitlementGrantsApi.md#entitlement_grants_retry) | **POST** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery
+*EntitlementGrantsApi* | [**entitlement_grants_revoke**](docs/EntitlementGrantsApi.md#entitlement_grants_revoke) | **POST** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant
+*GitHubIntegrationApi* | [**github_get_install_url**](docs/GitHubIntegrationApi.md#github_get_install_url) | **GET** /v1/github/install | Get GitHub App Installation URL
+*GitHubIntegrationApi* | [**github_list_repos**](docs/GitHubIntegrationApi.md#github_list_repos) | **GET** /v1/github/repos | List Available GitHub Repositories
 *LicenseApi* | [**licenses_create**](docs/LicenseApi.md#licenses_create) | **POST** /v1/licenses | Create License Key
 *LicenseApi* | [**licenses_delete_instance**](docs/LicenseApi.md#licenses_delete_instance) | **DELETE** /v1/licenses/instances/{instanceId} | Force Delete Instance
 *LicenseApi* | [**licenses_get**](docs/LicenseApi.md#licenses_get) | **GET** /v1/licenses/{id} | Get License Key
@@ -259,6 +265,8 @@ Class | Method | HTTP request | Description
  - [DisputeFileUpload](docs/DisputeFileUpload.md)
  - [DisputeList](docs/DisputeList.md)
  - [DisputeListMetaDto](docs/DisputeListMetaDto.md)
+ - [EntitlementGrantResponseDto](docs/EntitlementGrantResponseDto.md)
+ - [GithubReposResponseDto](docs/GithubReposResponseDto.md)
  - [Instance](docs/Instance.md)
  - [Invoice](docs/Invoice.md)
  - [License](docs/License.md)
@@ -326,6 +334,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionUserDto](docs/SubscriptionUserDto.md)
  - [SubscriptionsAction201Response](docs/SubscriptionsAction201Response.md)
  - [SupportedCurrenciesResponseDto](docs/SupportedCurrenciesResponseDto.md)
+ - [SyncLoginDto](docs/SyncLoginDto.md)
  - [UpdateCheckoutLinkDto](docs/UpdateCheckoutLinkDto.md)
  - [UpdateCollectionDto](docs/UpdateCollectionDto.md)
  - [UpdateCollectionProductDto](docs/UpdateCollectionProductDto.md)

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **payment_id** | **str** | Database payment transaction ID | [optional] 
 **checkout_url** | **str** | Checkout session redirect URL if loaded in link mode | [optional] 
 **product** | [**Product**](Product.md) | The details of the product being purchased | [optional] 
+**entitlement_grants** | **List[object]** | List of entitlement grants (e.g. GitHub repo invites) associated with this checkout. | [optional] 
 
 ## Example
 
