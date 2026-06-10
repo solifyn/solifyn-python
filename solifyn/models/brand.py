@@ -81,36 +81,6 @@ class Brand(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if website_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.website_url is None and "website_url" in self.model_fields_set:
-            _dict['websiteUrl'] = None
-
-        # set to None if support_email (nullable) is None
-        # and model_fields_set contains the field
-        if self.support_email is None and "support_email" in self.model_fields_set:
-            _dict['supportEmail'] = None
-
-        # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
-        # set to None if logo_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict['logoUrl'] = None
-
-        # set to None if statement_descriptor (nullable) is None
-        # and model_fields_set contains the field
-        if self.statement_descriptor is None and "statement_descriptor" in self.model_fields_set:
-            _dict['statementDescriptor'] = None
-
-        # set to None if business_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.business_id is None and "business_id" in self.model_fields_set:
-            _dict['businessId'] = None
-
         return _dict
 
     @classmethod

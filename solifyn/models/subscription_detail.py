@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from solifyn.models.order import Order
 from solifyn.models.resolved_addon import ResolvedAddon
 from solifyn.models.subscription import Subscription
@@ -34,7 +34,7 @@ class SubscriptionDetail(BaseModel):
     subscription: Subscription = Field(description="The main subscription details")
     payments: List[Order] = Field(description="The subscription payments / invoice billing history")
     purchased_addons: List[ResolvedAddon] = Field(description="List of purchased addons associated with this subscription", alias="purchasedAddons")
-    product: Optional[SubscriptionDetailProduct] = Field(description="The core product information associated with this subscription")
+    product: SubscriptionDetailProduct = Field(description="The core product information associated with this subscription")
     __properties: ClassVar[List[str]] = ["subscription", "payments", "purchasedAddons", "product"]
 
     model_config = ConfigDict(
@@ -96,11 +96,6 @@ class SubscriptionDetail(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of product
         if self.product:
             _dict['product'] = self.product.to_dict()
-        # set to None if product (nullable) is None
-        # and model_fields_set contains the field
-        if self.product is None and "product" in self.model_fields_set:
-            _dict['product'] = None
-
         return _dict
 
     @classmethod

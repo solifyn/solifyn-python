@@ -94,56 +94,6 @@ class Dispute(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of evidence
         if self.evidence:
             _dict['evidence'] = self.evidence.to_dict()
-        # set to None if reason (nullable) is None
-        # and model_fields_set contains the field
-        if self.reason is None and "reason" in self.model_fields_set:
-            _dict['reason'] = None
-
-        # set to None if needs_response_by (nullable) is None
-        # and model_fields_set contains the field
-        if self.needs_response_by is None and "needs_response_by" in self.model_fields_set:
-            _dict['needsResponseBy'] = None
-
-        # set to None if billing_address (nullable) is None
-        # and model_fields_set contains the field
-        if self.billing_address is None and "billing_address" in self.model_fields_set:
-            _dict['billingAddress'] = None
-
-        # set to None if customer_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.customer_name is None and "customer_name" in self.model_fields_set:
-            _dict['customerName'] = None
-
-        # set to None if customer_email (nullable) is None
-        # and model_fields_set contains the field
-        if self.customer_email is None and "customer_email" in self.model_fields_set:
-            _dict['customerEmail'] = None
-
-        # set to None if notes (nullable) is None
-        # and model_fields_set contains the field
-        if self.notes is None and "notes" in self.model_fields_set:
-            _dict['notes'] = None
-
-        # set to None if product_description (nullable) is None
-        # and model_fields_set contains the field
-        if self.product_description is None and "product_description" in self.model_fields_set:
-            _dict['productDescription'] = None
-
-        # set to None if service_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.service_date is None and "service_date" in self.model_fields_set:
-            _dict['serviceDate'] = None
-
-        # set to None if access_activity_log (nullable) is None
-        # and model_fields_set contains the field
-        if self.access_activity_log is None and "access_activity_log" in self.model_fields_set:
-            _dict['accessActivityLog'] = None
-
-        # set to None if evidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.evidence is None and "evidence" in self.model_fields_set:
-            _dict['evidence'] = None
-
         return _dict
 
     @classmethod

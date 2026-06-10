@@ -83,36 +83,6 @@ class WebhookEntitlementGrantPayload(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if payment_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.payment_id is None and "payment_id" in self.model_fields_set:
-            _dict['paymentId'] = None
-
-        # set to None if github_repo (nullable) is None
-        # and model_fields_set contains the field
-        if self.github_repo is None and "github_repo" in self.model_fields_set:
-            _dict['githubRepo'] = None
-
-        # set to None if github_permission (nullable) is None
-        # and model_fields_set contains the field
-        if self.github_permission is None and "github_permission" in self.model_fields_set:
-            _dict['githubPermission'] = None
-
-        # set to None if github_username (nullable) is None
-        # and model_fields_set contains the field
-        if self.github_username is None and "github_username" in self.model_fields_set:
-            _dict['githubUsername'] = None
-
-        # set to None if oauth_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.oauth_url is None and "oauth_url" in self.model_fields_set:
-            _dict['oauthUrl'] = None
-
-        # set to None if error_details (nullable) is None
-        # and model_fields_set contains the field
-        if self.error_details is None and "error_details" in self.model_fields_set:
-            _dict['errorDetails'] = None
-
         return _dict
 
     @classmethod

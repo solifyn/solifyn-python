@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.1.3"
+__version__ = "1.0.5"
 
 # import apis into sdk package
 from solifyn.api.balance_api import BalanceApi
@@ -25,6 +25,7 @@ from solifyn.api.collections_api import CollectionsApi
 from solifyn.api.customers_api import CustomersApi
 from solifyn.api.developer_api import DeveloperApi
 from solifyn.api.digital_file_api import DigitalFileApi
+from solifyn.api.discord_integration_api import DiscordIntegrationApi
 from solifyn.api.discounts_api import DiscountsApi
 from solifyn.api.disputes_api import DisputesApi
 from solifyn.api.entitlement_grants_api import EntitlementGrantsApi
@@ -91,6 +92,7 @@ from solifyn.models.customer_message_response_dto import CustomerMessageResponse
 from solifyn.models.customer_response_dto import CustomerResponseDto
 from solifyn.models.customer_shared_invite_response_dto import CustomerSharedInviteResponseDto
 from solifyn.models.dashboard_stats_dto import DashboardStatsDto
+from solifyn.models.discord_roles_response_dto import DiscordRolesResponseDto
 from solifyn.models.discount import Discount
 from solifyn.models.discount_create import DiscountCreate
 from solifyn.models.discount_update import DiscountUpdate

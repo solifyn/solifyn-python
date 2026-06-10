@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **has_github_access** | **bool** | Whether the product includes GitHub repository access. | 
 **github_repo** | **str** | GitHub repository to grant access to (format: owner/repo). | 
 **github_permission** | **str** | GitHub collaborator permission level. | 
+**has_discord_access** | **bool** | Whether the product includes Discord role access. | 
+**discord_guild_id** | **str** | Discord Guild (Server) ID to grant access to. | 
+**discord_role_id** | **str** | Discord Role ID to assign to the user. | 
 **is_tax_inclusive** | **bool** | Whether the product price already includes applicable sales taxes. | 
 **billing_period** | **int** | The subscription billing cycle interval in days (for subscription products). | 
 **trial_period_days** | **int** | Trial duration in days for subscription products. | 

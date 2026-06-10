@@ -52,6 +52,7 @@ from solifyn.models.customer_message_response_dto import CustomerMessageResponse
 from solifyn.models.customer_response_dto import CustomerResponseDto
 from solifyn.models.customer_shared_invite_response_dto import CustomerSharedInviteResponseDto
 from solifyn.models.dashboard_stats_dto import DashboardStatsDto
+from solifyn.models.discord_roles_response_dto import DiscordRolesResponseDto
 from solifyn.models.discount import Discount
 from solifyn.models.discount_create import DiscountCreate
 from solifyn.models.discount_update import DiscountUpdate

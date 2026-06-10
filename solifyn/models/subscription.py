@@ -41,18 +41,18 @@ class Subscription(BaseModel):
     manage_url: StrictStr = Field(description="The management URL for the billing/subscription")
     member: SubscriptionMemberDto = Field(description="The member details")
     user: SubscriptionUserDto = Field(description="The user details")
-    renewal_period_start: Optional[Dict[str, Any]] = Field(description="Start timestamp of the current renewal period")
-    renewal_period_end: Optional[Dict[str, Any]] = Field(description="End timestamp of the current renewal period")
+    renewal_period_start: Dict[str, Any] = Field(description="Start timestamp of the current renewal period")
+    renewal_period_end: Dict[str, Any] = Field(description="End timestamp of the current renewal period")
     cancel_at_period_end: StrictBool = Field(description="Whether the subscription is set to cancel at the end of the billing period")
-    cancel_option: Optional[Dict[str, Any]] = Field(description="The cancel option details")
-    cancellation_reason: Optional[Dict[str, Any]] = Field(description="The reason for cancellation")
-    canceled_at: Optional[Dict[str, Any]] = Field(description="Timestamp when the subscription was canceled")
+    cancel_option: Dict[str, Any] = Field(description="The cancel option details")
+    cancellation_reason: Dict[str, Any] = Field(description="The reason for cancellation")
+    canceled_at: Dict[str, Any] = Field(description="Timestamp when the subscription was canceled")
     currency: StrictStr = Field(description="The currency used for payments")
     company: SubscriptionCompanyDto = Field(description="The company context details")
     plan: SubscriptionPlanDto = Field(description="The plan associated with this subscription")
-    promo_code: Optional[Dict[str, Any]] = Field(description="The promo code applied to the subscription")
+    promo_code: Dict[str, Any] = Field(description="The promo code applied to the subscription")
     product: SubscriptionProductDto = Field(description="The product associated with the subscription")
-    license_key: Optional[Dict[str, Any]] = Field(description="The license key associated with this subscription")
+    license_key: Dict[str, Any] = Field(description="The license key associated with this subscription")
     metadata: Dict[str, Any] = Field(description="Additional metadata for the subscription")
     payment_collection_paused: StrictBool = Field(description="Whether the payment collection is currently paused")
     checkout_configuration_id: StrictStr = Field(description="The checkout configuration ID used")
@@ -115,56 +115,6 @@ class Subscription(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of product
         if self.product:
             _dict['product'] = self.product.to_dict()
-        # set to None if renewal_period_start (nullable) is None
-        # and model_fields_set contains the field
-        if self.renewal_period_start is None and "renewal_period_start" in self.model_fields_set:
-            _dict['renewal_period_start'] = None
-
-        # set to None if renewal_period_end (nullable) is None
-        # and model_fields_set contains the field
-        if self.renewal_period_end is None and "renewal_period_end" in self.model_fields_set:
-            _dict['renewal_period_end'] = None
-
-        # set to None if cancel_option (nullable) is None
-        # and model_fields_set contains the field
-        if self.cancel_option is None and "cancel_option" in self.model_fields_set:
-            _dict['cancel_option'] = None
-
-        # set to None if cancellation_reason (nullable) is None
-        # and model_fields_set contains the field
-        if self.cancellation_reason is None and "cancellation_reason" in self.model_fields_set:
-            _dict['cancellation_reason'] = None
-
-        # set to None if canceled_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.canceled_at is None and "canceled_at" in self.model_fields_set:
-            _dict['canceled_at'] = None
-
-        # set to None if promo_code (nullable) is None
-        # and model_fields_set contains the field
-        if self.promo_code is None and "promo_code" in self.model_fields_set:
-            _dict['promo_code'] = None
-
-        # set to None if license_key (nullable) is None
-        # and model_fields_set contains the field
-        if self.license_key is None and "license_key" in self.model_fields_set:
-            _dict['license_key'] = None
-
-        # set to None if price (nullable) is None
-        # and model_fields_set contains the field
-        if self.price is None and "price" in self.model_fields_set:
-            _dict['price'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
-
-        # set to None if customer_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.customer_id is None and "customer_id" in self.model_fields_set:
-            _dict['customerId'] = None
-
         return _dict
 
     @classmethod

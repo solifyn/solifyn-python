@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,11 +29,11 @@ class Instance(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="The unique database identifier of this instance record.")
     license_id: StrictStr = Field(description="The internal ID of the parent license key this instance belongs to.", alias="licenseId")
-    instance_id: Optional[StrictStr] = Field(description="The unique hardware hash or client-generated identifier of the activated device/machine.", alias="instanceId")
-    instance_name: Optional[StrictStr] = Field(description="A human-readable display name for this instance, assigned by the client application.", alias="instanceName")
-    ip_address: Optional[StrictStr] = Field(description="The IP address recorded at the time of activation.", alias="ipAddress")
+    instance_id: StrictStr = Field(description="The unique hardware hash or client-generated identifier of the activated device/machine.", alias="instanceId")
+    instance_name: StrictStr = Field(description="A human-readable display name for this instance, assigned by the client application.", alias="instanceName")
+    ip_address: StrictStr = Field(description="The IP address recorded at the time of activation.", alias="ipAddress")
     activated_at: StrictStr = Field(description="Timestamp when this device instance was first activated.", alias="activatedAt")
-    last_seen_at: Optional[StrictStr] = Field(description="Timestamp of the most recent activation heartbeat or re-activation check from this device.", alias="lastSeenAt")
+    last_seen_at: StrictStr = Field(description="Timestamp of the most recent activation heartbeat or re-activation check from this device.", alias="lastSeenAt")
     __properties: ClassVar[List[str]] = ["id", "licenseId", "instanceId", "instanceName", "ipAddress", "activatedAt", "lastSeenAt"]
 
     model_config = ConfigDict(
@@ -75,26 +75,6 @@ class Instance(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if instance_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.instance_id is None and "instance_id" in self.model_fields_set:
-            _dict['instanceId'] = None
-
-        # set to None if instance_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.instance_name is None and "instance_name" in self.model_fields_set:
-            _dict['instanceName'] = None
-
-        # set to None if ip_address (nullable) is None
-        # and model_fields_set contains the field
-        if self.ip_address is None and "ip_address" in self.model_fields_set:
-            _dict['ipAddress'] = None
-
-        # set to None if last_seen_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_seen_at is None and "last_seen_at" in self.model_fields_set:
-            _dict['lastSeenAt'] = None
-
         return _dict
 
     @classmethod

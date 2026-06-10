@@ -88,21 +88,6 @@ class DiscountUpdate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if usage_limit (nullable) is None
-        # and model_fields_set contains the field
-        if self.usage_limit is None and "usage_limit" in self.model_fields_set:
-            _dict['usage_limit'] = None
-
-        # set to None if expires_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.expires_at is None and "expires_at" in self.model_fields_set:
-            _dict['expires_at'] = None
-
-        # set to None if subscription_cycles (nullable) is None
-        # and model_fields_set contains the field
-        if self.subscription_cycles is None and "subscription_cycles" in self.model_fields_set:
-            _dict['subscription_cycles'] = None
-
         return _dict
 
     @classmethod

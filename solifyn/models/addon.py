@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,8 +29,8 @@ class Addon(BaseModel):
     """ # noqa: E501
     product_id: StrictStr = Field(description="The product ID of the addon product.", alias="productId")
     min_quantity: Union[StrictFloat, StrictInt] = Field(description="Minimum quantity allowed.", alias="minQuantity")
-    max_quantity: Optional[Dict[str, Any]] = Field(description="Maximum quantity allowed (null if unlimited).", alias="maxQuantity")
-    price_override: Optional[Dict[str, Any]] = Field(description="Price override (null if using base product price).", alias="priceOverride")
+    max_quantity: Dict[str, Any] = Field(description="Maximum quantity allowed (null if unlimited).", alias="maxQuantity")
+    price_override: Dict[str, Any] = Field(description="Price override (null if using base product price).", alias="priceOverride")
     is_seat_addon: StrictBool = Field(description="Flag indicating if this is a seat/license addon.", alias="isSeatAddon")
     __properties: ClassVar[List[str]] = ["productId", "minQuantity", "maxQuantity", "priceOverride", "isSeatAddon"]
 
@@ -73,16 +73,6 @@ class Addon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if max_quantity (nullable) is None
-        # and model_fields_set contains the field
-        if self.max_quantity is None and "max_quantity" in self.model_fields_set:
-            _dict['maxQuantity'] = None
-
-        # set to None if price_override (nullable) is None
-        # and model_fields_set contains the field
-        if self.price_override is None and "price_override" in self.model_fields_set:
-            _dict['priceOverride'] = None
-
         return _dict
 
     @classmethod

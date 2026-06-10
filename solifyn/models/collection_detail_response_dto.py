@@ -94,16 +94,6 @@ class CollectionDetailResponseDto(BaseModel):
                 if _item_products:
                     _items.append(_item_products.to_dict())
             _dict['products'] = _items
-        # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
-        # set to None if image_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.image_url is None and "image_url" in self.model_fields_set:
-            _dict['imageUrl'] = None
-
         return _dict
 
     @classmethod

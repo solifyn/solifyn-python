@@ -8,6 +8,7 @@ from solifyn.api.collections_api import CollectionsApi
 from solifyn.api.customers_api import CustomersApi
 from solifyn.api.developer_api import DeveloperApi
 from solifyn.api.digital_file_api import DigitalFileApi
+from solifyn.api.discord_integration_api import DiscordIntegrationApi
 from solifyn.api.discounts_api import DiscountsApi
 from solifyn.api.disputes_api import DisputesApi
 from solifyn.api.entitlement_grants_api import EntitlementGrantsApi

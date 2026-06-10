@@ -36,13 +36,17 @@ class EntitlementGrantResponseDto(BaseModel):
     github_repo: Optional[StrictStr] = Field(default=None, description="Target GitHub repository (owner/repo) if type is GITHUB.", alias="githubRepo")
     github_permission: Optional[StrictStr] = Field(default=None, description="GitHub access permission level if type is GITHUB.", alias="githubPermission")
     github_username: Optional[StrictStr] = Field(default=None, description="The connected customer GitHub username.", alias="githubUsername")
+    discord_guild_id: Optional[StrictStr] = Field(default=None, description="Target Discord Guild ID if type is DISCORD.", alias="discordGuildId")
+    discord_role_id: Optional[StrictStr] = Field(default=None, description="Target Discord Role ID if type is DISCORD.", alias="discordRoleId")
+    discord_username: Optional[StrictStr] = Field(default=None, description="The connected customer Discord username.", alias="discordUsername")
+    discord_user_id: Optional[StrictStr] = Field(default=None, description="The connected customer Discord user ID.", alias="discordUserId")
     status: StrictStr = Field(description="Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).")
     oauth_url: Optional[StrictStr] = Field(default=None, description="OAuth URL to redirect the customer to.", alias="oauthUrl")
     error_details: Optional[StrictStr] = Field(default=None, description="Error message if invitation delivery failed.", alias="errorDetails")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Platform-specific metadata.")
     created_at: StrictStr = Field(description="Creation timestamp.", alias="createdAt")
     updated_at: StrictStr = Field(description="Modification timestamp.", alias="updatedAt")
-    __properties: ClassVar[List[str]] = ["id", "businessId", "customerId", "paymentId", "productId", "type", "githubRepo", "githubPermission", "githubUsername", "status", "oauthUrl", "errorDetails", "metadata", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["id", "businessId", "customerId", "paymentId", "productId", "type", "githubRepo", "githubPermission", "githubUsername", "discordGuildId", "discordRoleId", "discordUsername", "discordUserId", "status", "oauthUrl", "errorDetails", "metadata", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,6 +108,10 @@ class EntitlementGrantResponseDto(BaseModel):
             "githubRepo": obj.get("githubRepo"),
             "githubPermission": obj.get("githubPermission"),
             "githubUsername": obj.get("githubUsername"),
+            "discordGuildId": obj.get("discordGuildId"),
+            "discordRoleId": obj.get("discordRoleId"),
+            "discordUsername": obj.get("discordUsername"),
+            "discordUserId": obj.get("discordUserId"),
             "status": obj.get("status"),
             "oauthUrl": obj.get("oauthUrl"),
             "errorDetails": obj.get("errorDetails"),

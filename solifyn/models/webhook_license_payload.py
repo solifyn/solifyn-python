@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,15 +31,15 @@ class WebhookLicensePayload(BaseModel):
     key: StrictStr = Field(description="The cryptographically generated license key string delivered to the customer.")
     status: StrictStr = Field(description="Lifecycle status of the license. ACTIVE = active. DISABLED = suspended. REVOKED = hard-revoked.")
     business_id: StrictStr = Field(description="The unique identifier associated with the business this license belongs to.", alias="businessId")
-    product_id: Optional[StrictStr] = Field(description="The unique ID of the product this license key is associated with.", alias="productId")
-    payment_id: Optional[StrictStr] = Field(description="The unique payment identifier that triggered the issuance of this license key.", alias="paymentId")
-    customer_id: Optional[StrictStr] = Field(description="The unique customer identifier (ID) who received this license key.", alias="customerId")
-    activation_limit: Optional[Union[StrictFloat, StrictInt]] = Field(description="Maximum number of simultaneous active device instances allowed for this license. Null means unlimited.", alias="activationLimit")
-    activation_message: Optional[StrictStr] = Field(description="Optional message displayed to the customer upon successful activation.", alias="activationMessage")
+    product_id: StrictStr = Field(description="The unique ID of the product this license key is associated with.", alias="productId")
+    payment_id: StrictStr = Field(description="The unique payment identifier that triggered the issuance of this license key.", alias="paymentId")
+    customer_id: StrictStr = Field(description="The unique customer identifier (ID) who received this license key.", alias="customerId")
+    activation_limit: Union[StrictFloat, StrictInt] = Field(description="Maximum number of simultaneous active device instances allowed for this license. Null means unlimited.", alias="activationLimit")
+    activation_message: StrictStr = Field(description="Optional message displayed to the customer upon successful activation.", alias="activationMessage")
     instances_count: Union[StrictFloat, StrictInt] = Field(description="Running count of how many times this license key has been activated.", alias="instancesCount")
-    expiry_hours: Optional[Union[StrictFloat, StrictInt]] = Field(description="Relative expiry duration in hours from the time of issuance.", alias="expiryHours")
-    expires_at: Optional[StrictStr] = Field(description="Absolute expiration timestamp. The license becomes invalid after this point.", alias="expiresAt")
-    filters: Optional[Dict[str, Any]] = Field(description="Optional custom metadata filters associated with the license.")
+    expiry_hours: Union[StrictFloat, StrictInt] = Field(description="Relative expiry duration in hours from the time of issuance.", alias="expiryHours")
+    expires_at: StrictStr = Field(description="Absolute expiration timestamp. The license becomes invalid after this point.", alias="expiresAt")
+    filters: Dict[str, Any] = Field(description="Optional custom metadata filters associated with the license.")
     archived: StrictBool = Field(description="Indicates if the license key is archived.")
     created_at: StrictStr = Field(description="Timestamp indicating exactly when the license key was issued.", alias="createdAt")
     updated_at: StrictStr = Field(description="Timestamp indicating when the license key was last modified.", alias="updatedAt")
@@ -91,46 +91,6 @@ class WebhookLicensePayload(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if product_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.product_id is None and "product_id" in self.model_fields_set:
-            _dict['productId'] = None
-
-        # set to None if payment_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.payment_id is None and "payment_id" in self.model_fields_set:
-            _dict['paymentId'] = None
-
-        # set to None if customer_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.customer_id is None and "customer_id" in self.model_fields_set:
-            _dict['customerId'] = None
-
-        # set to None if activation_limit (nullable) is None
-        # and model_fields_set contains the field
-        if self.activation_limit is None and "activation_limit" in self.model_fields_set:
-            _dict['activationLimit'] = None
-
-        # set to None if activation_message (nullable) is None
-        # and model_fields_set contains the field
-        if self.activation_message is None and "activation_message" in self.model_fields_set:
-            _dict['activationMessage'] = None
-
-        # set to None if expiry_hours (nullable) is None
-        # and model_fields_set contains the field
-        if self.expiry_hours is None and "expiry_hours" in self.model_fields_set:
-            _dict['expiryHours'] = None
-
-        # set to None if expires_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.expires_at is None and "expires_at" in self.model_fields_set:
-            _dict['expiresAt'] = None
-
-        # set to None if filters (nullable) is None
-        # and model_fields_set contains the field
-        if self.filters is None and "filters" in self.model_fields_set:
-            _dict['filters'] = None
-
         return _dict
 
     @classmethod

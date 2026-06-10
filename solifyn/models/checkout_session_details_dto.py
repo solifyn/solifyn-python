@@ -84,11 +84,6 @@ class CheckoutSessionDetailsDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of product
         if self.product:
             _dict['product'] = self.product.to_dict()
-        # set to None if product (nullable) is None
-        # and model_fields_set contains the field
-        if self.product is None and "product" in self.model_fields_set:
-            _dict['product'] = None
-
         return _dict
 
     @classmethod

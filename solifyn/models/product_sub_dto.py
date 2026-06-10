@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class ProductSubDto(BaseModel):
     """ # noqa: E501
     id: StrictStr
     name: StrictStr
-    digital_link: Optional[StrictStr] = Field(alias="digitalLink")
+    digital_link: StrictStr = Field(alias="digitalLink")
     __properties: ClassVar[List[str]] = ["id", "name", "digitalLink"]
 
     model_config = ConfigDict(
@@ -71,11 +71,6 @@ class ProductSubDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if digital_link (nullable) is None
-        # and model_fields_set contains the field
-        if self.digital_link is None and "digital_link" in self.model_fields_set:
-            _dict['digitalLink'] = None
-
         return _dict
 
     @classmethod

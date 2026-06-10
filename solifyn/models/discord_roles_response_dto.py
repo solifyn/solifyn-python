@@ -18,28 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WebhookRefundPayload(BaseModel):
+class DiscordRolesResponseDto(BaseModel):
     """
-    WebhookRefundPayload
+    DiscordRolesResponseDto
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Internal refund ID.")
-    payment_id: Optional[StrictStr] = Field(default=None, alias="paymentId")
-    amount: Optional[StrictStr] = Field(default=None, description="Dollar value, 2 d.p.")
-    currency: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    reason: Optional[StrictStr] = None
-    reference_value: Optional[StrictStr] = Field(default=None, alias="referenceValue")
-    provider: Optional[StrictStr] = None
-    provider_created_at: Optional[datetime] = Field(default=None, alias="providerCreatedAt")
-    created_at: Optional[datetime] = Field(default=None, alias="createdAt")
-    updated_at: Optional[datetime] = Field(default=None, alias="updatedAt")
-    __properties: ClassVar[List[str]] = ["id", "paymentId", "amount", "currency", "status", "reason", "referenceValue", "provider", "providerCreatedAt", "createdAt", "updatedAt"]
+    id: StrictStr = Field(description="The Discord Role ID")
+    name: StrictStr = Field(description="The Discord Role Name")
+    position: Union[StrictFloat, StrictInt] = Field(description="The position of the role in the server hierarchy")
+    color: Union[StrictFloat, StrictInt] = Field(description="The color of the role (hex integer code)")
+    __properties: ClassVar[List[str]] = ["id", "name", "position", "color"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +51,7 @@ class WebhookRefundPayload(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WebhookRefundPayload from a JSON string"""
+        """Create an instance of DiscordRolesResponseDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,7 +76,7 @@ class WebhookRefundPayload(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WebhookRefundPayload from a dict"""
+        """Create an instance of DiscordRolesResponseDto from a dict"""
         if obj is None:
             return None
 
@@ -93,16 +85,9 @@ class WebhookRefundPayload(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "paymentId": obj.get("paymentId"),
-            "amount": obj.get("amount"),
-            "currency": obj.get("currency"),
-            "status": obj.get("status"),
-            "reason": obj.get("reason"),
-            "referenceValue": obj.get("referenceValue"),
-            "provider": obj.get("provider"),
-            "providerCreatedAt": obj.get("providerCreatedAt"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "name": obj.get("name"),
+            "position": obj.get("position"),
+            "color": obj.get("color")
         })
         return _obj
 
