@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.7"
+__version__ = "1.0.9"
 
 # import apis into sdk package
 from solifyn.api.balance_api import BalanceApi
@@ -183,6 +183,7 @@ from solifyn.models.update_webhook_endpoint_dto import UpdateWebhookEndpointDto
 from solifyn.models.webhook_delivery_response_dto import WebhookDeliveryResponseDto
 from solifyn.models.webhook_dispute_payload import WebhookDisputePayload
 from solifyn.models.webhook_endpoint_response_dto import WebhookEndpointResponseDto
+from solifyn.models.webhook_entitlement_grant_payload import WebhookEntitlementGrantPayload
 from solifyn.models.webhook_license_payload import WebhookLicensePayload
 from solifyn.models.webhook_payment_payload import WebhookPaymentPayload
 from solifyn.models.webhook_payment_payload_billing_address import WebhookPaymentPayloadBillingAddress

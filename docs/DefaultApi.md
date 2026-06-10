@@ -7,6 +7,10 @@ Method | HTTP request | Description
 [**dispute_created_post**](DefaultApi.md#dispute_created_post) | **POST** /dispute.created | Dispute Created
 [**dispute_lost_post**](DefaultApi.md#dispute_lost_post) | **POST** /dispute.lost | Dispute Lost
 [**dispute_won_post**](DefaultApi.md#dispute_won_post) | **POST** /dispute.won | Dispute Won
+[**entitlement_grant_created_post**](DefaultApi.md#entitlement_grant_created_post) | **POST** /entitlement_grant.created | Entitlement Grant Created
+[**entitlement_grant_delivered_post**](DefaultApi.md#entitlement_grant_delivered_post) | **POST** /entitlement_grant.delivered | Entitlement Grant Delivered
+[**entitlement_grant_failed_post**](DefaultApi.md#entitlement_grant_failed_post) | **POST** /entitlement_grant.failed | Entitlement Grant Failed
+[**entitlement_grant_revoked_post**](DefaultApi.md#entitlement_grant_revoked_post) | **POST** /entitlement_grant.revoked | Entitlement Grant Revoked
 [**license_created_post**](DefaultApi.md#license_created_post) | **POST** /license.created | License Created
 [**license_revoked_post**](DefaultApi.md#license_revoked_post) | **POST** /license.revoked | License Revoked
 [**payment_created_post**](DefaultApi.md#payment_created_post) | **POST** /payment.created | Payment Created
@@ -222,6 +226,306 @@ with solifyn.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_dispute_payload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook processed successfully. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grant_created_post**
+> entitlement_grant_created_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+
+Entitlement Grant Created
+
+Occurs when a new entitlement grant is created (e.g., at checkout completion if the product has GitHub access). The collaborator invitation is pending.
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.DefaultApi(api_client)
+    webhook_entitlement_grant_payload = solifyn.WebhookEntitlementGrantPayload() # WebhookEntitlementGrantPayload |  (optional)
+
+    try:
+        # Entitlement Grant Created
+        api_instance.entitlement_grant_created_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+    except Exception as e:
+        print("Exception when calling DefaultApi->entitlement_grant_created_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_entitlement_grant_payload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook processed successfully. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grant_delivered_post**
+> entitlement_grant_delivered_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+
+Entitlement Grant Delivered
+
+Occurs when the customer successfully connects their GitHub account and the collaborator invitation is successfully delivered.
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.DefaultApi(api_client)
+    webhook_entitlement_grant_payload = solifyn.WebhookEntitlementGrantPayload() # WebhookEntitlementGrantPayload |  (optional)
+
+    try:
+        # Entitlement Grant Delivered
+        api_instance.entitlement_grant_delivered_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+    except Exception as e:
+        print("Exception when calling DefaultApi->entitlement_grant_delivered_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_entitlement_grant_payload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook processed successfully. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grant_failed_post**
+> entitlement_grant_failed_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+
+Entitlement Grant Failed
+
+Occurs when invitation delivery fails (e.g., if the user GitHub account is flagged or invitation limit is reached).
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.DefaultApi(api_client)
+    webhook_entitlement_grant_payload = solifyn.WebhookEntitlementGrantPayload() # WebhookEntitlementGrantPayload |  (optional)
+
+    try:
+        # Entitlement Grant Failed
+        api_instance.entitlement_grant_failed_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+    except Exception as e:
+        print("Exception when calling DefaultApi->entitlement_grant_failed_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_entitlement_grant_payload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Webhook processed successfully. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **entitlement_grant_revoked_post**
+> entitlement_grant_revoked_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+
+Entitlement Grant Revoked
+
+Occurs when the customer access is removed from the repository (manually or automatically via subscription cancel/refund).
+
+### Example
+
+* Bearer (API Key) Authentication (ApiKeyAuth):
+
+```python
+import solifyn
+from solifyn.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.solifyn.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = solifyn.Configuration(
+    host = "https://api.solifyn.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (API Key): ApiKeyAuth
+configuration = solifyn.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with solifyn.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = solifyn.DefaultApi(api_client)
+    webhook_entitlement_grant_payload = solifyn.WebhookEntitlementGrantPayload() # WebhookEntitlementGrantPayload |  (optional)
+
+    try:
+        # Entitlement Grant Revoked
+        api_instance.entitlement_grant_revoked_post(webhook_entitlement_grant_payload=webhook_entitlement_grant_payload)
+    except Exception as e:
+        print("Exception when calling DefaultApi->entitlement_grant_revoked_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_entitlement_grant_payload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] 
 
 ### Return type
 
