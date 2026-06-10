@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class ResolvedAddon(BaseModel):
     """ # noqa: E501
     product_id: StrictStr = Field(description="Unique product ID of the addon", alias="productId")
     name: StrictStr = Field(description="Display name of the addon")
-    image_url: Dict[str, Any] = Field(description="URL of the addon image", alias="imageUrl")
+    image_url: Optional[Dict[str, Any]] = Field(description="URL of the addon image", alias="imageUrl")
     quantity: Union[StrictFloat, StrictInt] = Field(description="The purchased quantity of the addon")
     __properties: ClassVar[List[str]] = ["productId", "name", "imageUrl", "quantity"]
 
@@ -72,6 +72,11 @@ class ResolvedAddon(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if image_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.image_url is None and "image_url" in self.model_fields_set:
+            _dict['imageUrl'] = None
+
         return _dict
 
     @classmethod

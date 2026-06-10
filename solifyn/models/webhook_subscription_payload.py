@@ -83,6 +83,51 @@ class WebhookSubscriptionPayload(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if renewal_period_start (nullable) is None
+        # and model_fields_set contains the field
+        if self.renewal_period_start is None and "renewal_period_start" in self.model_fields_set:
+            _dict['renewalPeriodStart'] = None
+
+        # set to None if renewal_period_end (nullable) is None
+        # and model_fields_set contains the field
+        if self.renewal_period_end is None and "renewal_period_end" in self.model_fields_set:
+            _dict['renewalPeriodEnd'] = None
+
+        # set to None if customer_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_id is None and "customer_id" in self.model_fields_set:
+            _dict['customerId'] = None
+
+        # set to None if customer_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_email is None and "customer_email" in self.model_fields_set:
+            _dict['customerEmail'] = None
+
+        # set to None if customer_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_name is None and "customer_name" in self.model_fields_set:
+            _dict['customerName'] = None
+
+        # set to None if product_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.product_id is None and "product_id" in self.model_fields_set:
+            _dict['productId'] = None
+
+        # set to None if product_title (nullable) is None
+        # and model_fields_set contains the field
+        if self.product_title is None and "product_title" in self.model_fields_set:
+            _dict['productTitle'] = None
+
+        # set to None if created_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_at is None and "created_at" in self.model_fields_set:
+            _dict['createdAt'] = None
+
+        # set to None if updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_at is None and "updated_at" in self.model_fields_set:
+            _dict['updatedAt'] = None
+
         return _dict
 
     @classmethod

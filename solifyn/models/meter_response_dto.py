@@ -88,6 +88,26 @@ class MeterResponseDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if aggregation_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.aggregation_key is None and "aggregation_key" in self.model_fields_set:
+            _dict['aggregationKey'] = None
+
+        # set to None if unit (nullable) is None
+        # and model_fields_set contains the field
+        if self.unit is None and "unit" in self.model_fields_set:
+            _dict['unit'] = None
+
+        # set to None if filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.filters is None and "filters" in self.model_fields_set:
+            _dict['filters'] = None
+
         return _dict
 
     @classmethod

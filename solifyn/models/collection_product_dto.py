@@ -34,35 +34,35 @@ class CollectionProductDto(BaseModel):
     currency: StrictStr = Field(description="The three-letter ISO currency code (e.g. USD, VND, EUR).")
     description: Optional[StrictStr] = Field(default=None, description="A comprehensive rich text description of the product.")
     status: StrictStr = Field(description="The lifecycle status of the product (e.g. ACTIVE, ARCHIVED).")
-    image_url: StrictStr = Field(description="URL of the product cover image.", alias="imageUrl")
+    image_url: Optional[StrictStr] = Field(description="URL of the product cover image.", alias="imageUrl")
     tax_category: StrictStr = Field(description="The tax classification for the product.", alias="taxCategory")
     pricing_type: StrictStr = Field(description="Pricing model of the product.", alias="pricingType")
-    discount: Union[StrictFloat, StrictInt] = Field(description="Discount value as a percentage or fixed amount.")
+    discount: Optional[Union[StrictFloat, StrictInt]] = Field(description="Discount value as a percentage or fixed amount.")
     has_license_key: StrictBool = Field(description="Indicates if the product issues a cryptographically secure software license key upon checkout completion.", alias="hasLicenseKey")
     has_digital_delivery: StrictBool = Field(description="Whether the product includes digital file downloads upon purchase.", alias="hasDigitalDelivery")
     has_github_access: StrictBool = Field(description="Whether the product includes GitHub repository access.", alias="hasGithubAccess")
-    github_repo: StrictStr = Field(description="GitHub repository to grant access to (format: owner/repo).", alias="githubRepo")
-    github_permission: StrictStr = Field(description="GitHub collaborator permission level.", alias="githubPermission")
+    github_repo: Optional[StrictStr] = Field(description="GitHub repository to grant access to (format: owner/repo).", alias="githubRepo")
+    github_permission: Optional[StrictStr] = Field(description="GitHub collaborator permission level.", alias="githubPermission")
     is_tax_inclusive: StrictBool = Field(description="Whether the product price already includes applicable sales taxes.", alias="isTaxInclusive")
-    billing_period: StrictInt = Field(description="The subscription billing cycle interval in days (for subscription products).", alias="billingPeriod")
-    trial_period_days: StrictInt = Field(description="Trial duration in days for subscription products.", alias="trialPeriodDays")
-    expiration_days: StrictInt = Field(description="Automatic expiration period in days for the subscription entitlement.", alias="expirationDays")
-    statement_descriptor: StrictStr = Field(description="Custom text displayed on customer credit card statements for purchases of this product.", alias="statementDescriptor")
+    billing_period: Optional[StrictInt] = Field(description="The subscription billing cycle interval in days (for subscription products).", alias="billingPeriod")
+    trial_period_days: Optional[StrictInt] = Field(description="Trial duration in days for subscription products.", alias="trialPeriodDays")
+    expiration_days: Optional[StrictInt] = Field(description="Automatic expiration period in days for the subscription entitlement.", alias="expirationDays")
+    statement_descriptor: Optional[StrictStr] = Field(description="Custom text displayed on customer credit card statements for purchases of this product.", alias="statementDescriptor")
     pay_what_you_want: StrictBool = Field(description="Indicates if customers are allowed to enter a custom pricing amount at checkout.", alias="payWhatYouWant")
-    metadata: Dict[str, StrictStr] = Field(description="Custom developer metadata key-value pairs associated with the product.")
-    custom_fields: List[Dict[str, Any]] = Field(description="Custom form field questions to ask the customer during checkout.", alias="customFields")
-    stock: StrictInt = Field(description="Available stock quantity, or null for unlimited inventory.")
+    metadata: Optional[Dict[str, StrictStr]] = Field(description="Custom developer metadata key-value pairs associated with the product.")
+    custom_fields: Optional[List[Dict[str, Any]]] = Field(description="Custom form field questions to ask the customer during checkout.", alias="customFields")
+    stock: Optional[StrictInt] = Field(description="Available stock quantity, or null for unlimited inventory.")
     activation_limit: StrictInt = Field(description="Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true).", alias="activationLimit")
     is_listed: StrictBool = Field(description="Defines if the product is listed publicly on the merchant's storefront template.", alias="isListed")
     is_free: StrictBool = Field(description="Whether the product is free.", alias="isFree")
     created_at: datetime = Field(description="Timestamp indicating exactly when the product was created.", alias="createdAt")
     updated_at: datetime = Field(description="Timestamp indicating when the product was last modified.", alias="updatedAt")
     is_permanently_deleted: StrictBool = Field(description="Indicates if the product has been permanently deleted.", alias="isPermanentlyDeleted")
-    brand_id: StrictStr = Field(description="Optional brand identifier.", alias="brandId")
-    digital_link: StrictStr = Field(description="Secure link for digital delivery.", alias="digitalLink")
-    instructions: StrictStr = Field(description="Special instructions provided upon purchase.")
-    activation_message: StrictStr = Field(description="Custom message displayed when a license key is activated.", alias="activationMessage")
-    expiry_hours: StrictInt = Field(description="Number of hours until the license key expires.", alias="expiryHours")
+    brand_id: Optional[StrictStr] = Field(description="Optional brand identifier.", alias="brandId")
+    digital_link: Optional[StrictStr] = Field(description="Secure link for digital delivery.", alias="digitalLink")
+    instructions: Optional[StrictStr] = Field(description="Special instructions provided upon purchase.")
+    activation_message: Optional[StrictStr] = Field(description="Custom message displayed when a license key is activated.", alias="activationMessage")
+    expiry_hours: Optional[StrictInt] = Field(description="Number of hours until the license key expires.", alias="expiryHours")
     business_id: StrictStr = Field(description="The unique identifier of the business owning this product.", alias="businessId")
     quantity: Union[StrictFloat, StrictInt] = Field(description="Quantity of the product in the collection")
     __properties: ClassVar[List[str]] = ["id", "name", "price", "currency", "description", "status", "imageUrl", "taxCategory", "pricingType", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "isTaxInclusive", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "activationLimit", "isListed", "isFree", "createdAt", "updatedAt", "isPermanentlyDeleted", "brandId", "digitalLink", "instructions", "activationMessage", "expiryHours", "businessId", "quantity"]
@@ -84,6 +84,9 @@ class CollectionProductDto(BaseModel):
     @field_validator('github_permission')
     def github_permission_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['pull', 'triage', 'push', 'maintain', 'admin']):
             raise ValueError("must be one of enum values ('pull', 'triage', 'push', 'maintain', 'admin')")
         return value
@@ -127,6 +130,91 @@ class CollectionProductDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if image_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.image_url is None and "image_url" in self.model_fields_set:
+            _dict['imageUrl'] = None
+
+        # set to None if discount (nullable) is None
+        # and model_fields_set contains the field
+        if self.discount is None and "discount" in self.model_fields_set:
+            _dict['discount'] = None
+
+        # set to None if github_repo (nullable) is None
+        # and model_fields_set contains the field
+        if self.github_repo is None and "github_repo" in self.model_fields_set:
+            _dict['githubRepo'] = None
+
+        # set to None if github_permission (nullable) is None
+        # and model_fields_set contains the field
+        if self.github_permission is None and "github_permission" in self.model_fields_set:
+            _dict['githubPermission'] = None
+
+        # set to None if billing_period (nullable) is None
+        # and model_fields_set contains the field
+        if self.billing_period is None and "billing_period" in self.model_fields_set:
+            _dict['billingPeriod'] = None
+
+        # set to None if trial_period_days (nullable) is None
+        # and model_fields_set contains the field
+        if self.trial_period_days is None and "trial_period_days" in self.model_fields_set:
+            _dict['trialPeriodDays'] = None
+
+        # set to None if expiration_days (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration_days is None and "expiration_days" in self.model_fields_set:
+            _dict['expirationDays'] = None
+
+        # set to None if statement_descriptor (nullable) is None
+        # and model_fields_set contains the field
+        if self.statement_descriptor is None and "statement_descriptor" in self.model_fields_set:
+            _dict['statementDescriptor'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
+        # set to None if custom_fields (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_fields is None and "custom_fields" in self.model_fields_set:
+            _dict['customFields'] = None
+
+        # set to None if stock (nullable) is None
+        # and model_fields_set contains the field
+        if self.stock is None and "stock" in self.model_fields_set:
+            _dict['stock'] = None
+
+        # set to None if brand_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.brand_id is None and "brand_id" in self.model_fields_set:
+            _dict['brandId'] = None
+
+        # set to None if digital_link (nullable) is None
+        # and model_fields_set contains the field
+        if self.digital_link is None and "digital_link" in self.model_fields_set:
+            _dict['digitalLink'] = None
+
+        # set to None if instructions (nullable) is None
+        # and model_fields_set contains the field
+        if self.instructions is None and "instructions" in self.model_fields_set:
+            _dict['instructions'] = None
+
+        # set to None if activation_message (nullable) is None
+        # and model_fields_set contains the field
+        if self.activation_message is None and "activation_message" in self.model_fields_set:
+            _dict['activationMessage'] = None
+
+        # set to None if expiry_hours (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiry_hours is None and "expiry_hours" in self.model_fields_set:
+            _dict['expiryHours'] = None
+
         return _dict
 
     @classmethod

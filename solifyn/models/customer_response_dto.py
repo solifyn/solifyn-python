@@ -80,6 +80,36 @@ class CustomerResponseDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if member_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.member_id is None and "member_id" in self.model_fields_set:
+            _dict['memberId'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if username (nullable) is None
+        # and model_fields_set contains the field
+        if self.username is None and "username" in self.model_fields_set:
+            _dict['username'] = None
+
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if phone_number (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone_number is None and "phone_number" in self.model_fields_set:
+            _dict['phone_number'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod

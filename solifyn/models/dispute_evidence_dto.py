@@ -72,6 +72,26 @@ class DisputeEvidenceDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if cancellation_policy (nullable) is None
+        # and model_fields_set contains the field
+        if self.cancellation_policy is None and "cancellation_policy" in self.model_fields_set:
+            _dict['cancellation_policy'] = None
+
+        # set to None if customer_communication (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_communication is None and "customer_communication" in self.model_fields_set:
+            _dict['customer_communication'] = None
+
+        # set to None if refund_policy (nullable) is None
+        # and model_fields_set contains the field
+        if self.refund_policy is None and "refund_policy" in self.model_fields_set:
+            _dict['refund_policy'] = None
+
+        # set to None if uncategorized (nullable) is None
+        # and model_fields_set contains the field
+        if self.uncategorized is None and "uncategorized" in self.model_fields_set:
+            _dict['uncategorized'] = None
+
         return _dict
 
     @classmethod

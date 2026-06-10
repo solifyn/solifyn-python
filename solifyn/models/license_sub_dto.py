@@ -31,9 +31,9 @@ class LicenseSubDto(BaseModel):
     id: StrictStr
     key: StrictStr
     status: StrictStr
-    activation_limit: Union[StrictFloat, StrictInt] = Field(alias="activationLimit")
-    activation_message: StrictStr = Field(alias="activationMessage")
-    expires_at: StrictStr = Field(alias="expiresAt")
+    activation_limit: Optional[Union[StrictFloat, StrictInt]] = Field(alias="activationLimit")
+    activation_message: Optional[StrictStr] = Field(alias="activationMessage")
+    expires_at: Optional[StrictStr] = Field(alias="expiresAt")
     product: Optional[ProductSubDto] = None
     __properties: ClassVar[List[str]] = ["id", "key", "status", "activationLimit", "activationMessage", "expiresAt", "product"]
 
@@ -79,6 +79,21 @@ class LicenseSubDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of product
         if self.product:
             _dict['product'] = self.product.to_dict()
+        # set to None if activation_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.activation_limit is None and "activation_limit" in self.model_fields_set:
+            _dict['activationLimit'] = None
+
+        # set to None if activation_message (nullable) is None
+        # and model_fields_set contains the field
+        if self.activation_message is None and "activation_message" in self.model_fields_set:
+            _dict['activationMessage'] = None
+
+        # set to None if expires_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.expires_at is None and "expires_at" in self.model_fields_set:
+            _dict['expiresAt'] = None
+
         return _dict
 
     @classmethod

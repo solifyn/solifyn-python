@@ -76,6 +76,11 @@ class MeterUsageEventDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         return _dict
 
     @classmethod

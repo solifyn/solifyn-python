@@ -34,9 +34,9 @@ class Discount(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The customer-facing name of the discount code (e.g. Summer Sale).")
     type: StrictStr = Field(description="The discount calculation type: percentage or fixed_amount.")
     amount: StrictInt = Field(description="The discount value. For percentage type, it is in basis points (e.g. 1000 = 10.00%). For fixed_amount type, it is in cents (e.g. 1000 = $10.00).")
-    usage_limit: StrictInt = Field(description="Maximum number of times this discount code can be redeemed. Null represents unlimited usage.", alias="usageLimit")
+    usage_limit: Optional[StrictInt] = Field(description="Maximum number of times this discount code can be redeemed. Null represents unlimited usage.", alias="usageLimit")
     times_used: StrictInt = Field(description="The number of times this discount code has been successfully redeemed.", alias="timesUsed")
-    expires_at: datetime = Field(description="The expiration timestamp after which the discount code is no longer valid.", alias="expiresAt")
+    expires_at: Optional[datetime] = Field(description="The expiration timestamp after which the discount code is no longer valid.", alias="expiresAt")
     status: StrictStr = Field(description="The current status of the discount.")
     business_id: StrictStr = Field(description="The unique identifier associated with the business this discount belongs to.", alias="businessId")
     created_at: datetime = Field(description="Timestamp indicating exactly when the discount was created.", alias="createdAt")
@@ -96,6 +96,16 @@ class Discount(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if usage_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.usage_limit is None and "usage_limit" in self.model_fields_set:
+            _dict['usageLimit'] = None
+
+        # set to None if expires_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.expires_at is None and "expires_at" in self.model_fields_set:
+            _dict['expiresAt'] = None
+
         return _dict
 
     @classmethod

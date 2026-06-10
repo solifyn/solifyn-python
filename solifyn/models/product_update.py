@@ -140,6 +140,16 @@ class ProductUpdate(BaseModel):
                 if _item_addons:
                     _items.append(_item_addons.to_dict())
             _dict['addons'] = _items
+        # set to None if activation_limit (nullable) is None
+        # and model_fields_set contains the field
+        if self.activation_limit is None and "activation_limit" in self.model_fields_set:
+            _dict['activationLimit'] = None
+
+        # set to None if brand_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.brand_id is None and "brand_id" in self.model_fields_set:
+            _dict['brandId'] = None
+
         return _dict
 
     @classmethod

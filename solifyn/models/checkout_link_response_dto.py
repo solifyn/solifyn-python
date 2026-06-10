@@ -86,6 +86,66 @@ class CheckoutLinkResponseDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if title (nullable) is None
+        # and model_fields_set contains the field
+        if self.title is None and "title" in self.model_fields_set:
+            _dict['title'] = None
+
+        # set to None if product_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.product_id is None and "product_id" in self.model_fields_set:
+            _dict['productId'] = None
+
+        # set to None if collection_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.collection_id is None and "collection_id" in self.model_fields_set:
+            _dict['collectionId'] = None
+
+        # set to None if customer_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_name is None and "customer_name" in self.model_fields_set:
+            _dict['customerName'] = None
+
+        # set to None if customer_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_email is None and "customer_email" in self.model_fields_set:
+            _dict['customerEmail'] = None
+
+        # set to None if address_line1 (nullable) is None
+        # and model_fields_set contains the field
+        if self.address_line1 is None and "address_line1" in self.model_fields_set:
+            _dict['addressLine1'] = None
+
+        # set to None if city (nullable) is None
+        # and model_fields_set contains the field
+        if self.city is None and "city" in self.model_fields_set:
+            _dict['city'] = None
+
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
+        # set to None if postal_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.postal_code is None and "postal_code" in self.model_fields_set:
+            _dict['postalCode'] = None
+
+        # set to None if country (nullable) is None
+        # and model_fields_set contains the field
+        if self.country is None and "country" in self.model_fields_set:
+            _dict['country'] = None
+
+        # set to None if redirect_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.redirect_url is None and "redirect_url" in self.model_fields_set:
+            _dict['redirectUrl'] = None
+
+        # set to None if cancel_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.cancel_url is None and "cancel_url" in self.model_fields_set:
+            _dict['cancelUrl'] = None
+
         return _dict
 
     @classmethod

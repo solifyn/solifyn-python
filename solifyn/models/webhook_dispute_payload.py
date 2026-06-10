@@ -82,6 +82,31 @@ class WebhookDisputePayload(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if reason (nullable) is None
+        # and model_fields_set contains the field
+        if self.reason is None and "reason" in self.model_fields_set:
+            _dict['reason'] = None
+
+        # set to None if needs_response_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.needs_response_by is None and "needs_response_by" in self.model_fields_set:
+            _dict['needsResponseBy'] = None
+
+        # set to None if customer_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_name is None and "customer_name" in self.model_fields_set:
+            _dict['customerName'] = None
+
+        # set to None if customer_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.customer_email is None and "customer_email" in self.model_fields_set:
+            _dict['customerEmail'] = None
+
+        # set to None if notes (nullable) is None
+        # and model_fields_set contains the field
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict['notes'] = None
+
         return _dict
 
     @classmethod

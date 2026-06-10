@@ -80,6 +80,26 @@ class WebhookRefundPayload(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if reason (nullable) is None
+        # and model_fields_set contains the field
+        if self.reason is None and "reason" in self.model_fields_set:
+            _dict['reason'] = None
+
+        # set to None if reference_value (nullable) is None
+        # and model_fields_set contains the field
+        if self.reference_value is None and "reference_value" in self.model_fields_set:
+            _dict['referenceValue'] = None
+
+        # set to None if provider (nullable) is None
+        # and model_fields_set contains the field
+        if self.provider is None and "provider" in self.model_fields_set:
+            _dict['provider'] = None
+
+        # set to None if provider_created_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.provider_created_at is None and "provider_created_at" in self.model_fields_set:
+            _dict['providerCreatedAt'] = None
+
         return _dict
 
     @classmethod
