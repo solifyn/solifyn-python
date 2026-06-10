@@ -334,5 +334,4 @@ solifyn/models/webhook_subscription_payload.py
 solifyn/py.typed
 solifyn/rest.py
 test-requirements.txt
-test/__init__.py
 tox.ini
