@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.5"
+__version__ = "1.1.4"
 
 # import apis into sdk package
 from solifyn.api.balance_api import BalanceApi

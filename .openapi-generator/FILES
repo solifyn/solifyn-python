@@ -341,5 +341,4 @@ solifyn/py.typed
 solifyn/rest.py
 test-requirements.txt
 test/__init__.py
-test/test_default_api.py
 tox.ini
