@@ -1,0 +1,54 @@
+# ProductUpdate
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** | Product display name. | [optional] 
+**description** | **str** | A description of the product. | [optional] 
+**price** | **float** | Price value. | [optional] 
+**currency** | **str** | Product pricing currency. | [optional] [default to 'USD']
+**image_url** | **str** | URL of the product cover image. | [optional] 
+**tax_category** | **str** | Tax classification. | [optional] 
+**discount** | **float** | Percentage or flat rate discount. | [optional] 
+**has_license_key** | **bool** | Whether to automatically issue license keys upon successful orders. | [optional] [default to False]
+**has_digital_delivery** | **bool** | Whether the purchase includes downloadable files. | [optional] [default to False]
+**has_github_access** | **bool** | Whether the purchase includes GitHub repository access. | [optional] [default to False]
+**github_repo** | **str** | GitHub repository to grant access to (format: owner/repo). | [optional] 
+**github_permission** | **str** | GitHub collaborator permission level. | [optional] 
+**is_tax_inclusive** | **bool** | Whether tax is included in the base price. | [optional] [default to False]
+**activation_limit** | **int** | Maximum concurrent activated instances allowed per license key. | [optional] 
+**brand_id** | **str** | Brand id for the product, if not provided will default to primary brand. | [optional] 
+**billing_period** | **int** | Billing period in days (for Subscription products). | [optional] 
+**trial_period_days** | **int** | Trial duration in days. | [optional] 
+**expiration_days** | **int** | Subscription expiration duration in days. | [optional] 
+**statement_descriptor** | **str** | Custom billing descriptor. | [optional] 
+**pay_what_you_want** | **bool** | Allow pay-what-you-want pricing. | [optional] [default to False]
+**metadata** | **Dict[str, str]** | Developer key-value metadata pairs. | [optional] 
+**custom_fields** | [**List[ProductCreateCustomFieldsInner]**](ProductCreateCustomFieldsInner.md) | Form field configurations to gather during checkout. | [optional] 
+**stock** | **int** | Initial stock quantity limit. | [optional] 
+**is_listed** | **bool** | Whether the product is publicly visible. | [optional] [default to True]
+**is_free** | **bool** | Whether the product is free of charge. | [optional] [default to False]
+**addons** | [**List[ProductCreateAddonsInner]**](ProductCreateAddonsInner.md) | Product addons configurations. | [optional] 
+
+## Example
+
+```python
+from solifyn.models.product_update import ProductUpdate
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ProductUpdate from a JSON string
+product_update_instance = ProductUpdate.from_json(json)
+# print the JSON string representation of the object
+print(ProductUpdate.to_json())
+
+# convert the object into a dict
+product_update_dict = product_update_instance.to_dict()
+# create an instance of ProductUpdate from a dict
+product_update_from_dict = ProductUpdate.from_dict(product_update_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
