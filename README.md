@@ -142,6 +142,16 @@ Class | Method | HTTP request | Description
 *EntitlementGrantsApi* | [**entitlement_grants_list**](docs/EntitlementGrantsApi.md#entitlement_grants_list) | **GET** /v1/entitlement-grants | List Entitlement Grants
 *EntitlementGrantsApi* | [**entitlement_grants_retry**](docs/EntitlementGrantsApi.md#entitlement_grants_retry) | **POST** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery
 *EntitlementGrantsApi* | [**entitlement_grants_revoke**](docs/EntitlementGrantsApi.md#entitlement_grants_revoke) | **POST** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant
+*EntitlementsApi* | [**entitlements_create**](docs/EntitlementsApi.md#entitlements_create) | **POST** /v1/entitlements | Create Entitlement
+*EntitlementsApi* | [**entitlements_delete**](docs/EntitlementsApi.md#entitlements_delete) | **DELETE** /v1/entitlements/{id} | Delete Entitlement
+*EntitlementsApi* | [**entitlements_get**](docs/EntitlementsApi.md#entitlements_get) | **GET** /v1/entitlements/{id} | Retrieve Entitlement
+*EntitlementsApi* | [**entitlements_list**](docs/EntitlementsApi.md#entitlements_list) | **GET** /v1/entitlements | List Entitlements
+*EntitlementsApi* | [**entitlements_update**](docs/EntitlementsApi.md#entitlements_update) | **PATCH** /v1/entitlements/{id} | Update Entitlement
+*FramerIntegrationApi* | [**framer_create_template**](docs/FramerIntegrationApi.md#framer_create_template) | **POST** /v1/framer/templates | Create Framer Template
+*FramerIntegrationApi* | [**framer_delete_template**](docs/FramerIntegrationApi.md#framer_delete_template) | **DELETE** /v1/framer/templates/{id} | Delete Framer Template
+*FramerIntegrationApi* | [**framer_get_template**](docs/FramerIntegrationApi.md#framer_get_template) | **GET** /v1/framer/templates/{id} | Retrieve Framer Template
+*FramerIntegrationApi* | [**framer_list_templates**](docs/FramerIntegrationApi.md#framer_list_templates) | **GET** /v1/framer/templates | List Framer Templates
+*FramerIntegrationApi* | [**framer_update_template**](docs/FramerIntegrationApi.md#framer_update_template) | **PUT** /v1/framer/templates/{id} | Update Framer Template
 *GitHubIntegrationApi* | [**github_get_install_url**](docs/GitHubIntegrationApi.md#github_get_install_url) | **GET** /v1/github/install | Get GitHub App Installation URL
 *GitHubIntegrationApi* | [**github_list_repos**](docs/GitHubIntegrationApi.md#github_list_repos) | **GET** /v1/github/repos | List Available GitHub Repositories
 *LicenseApi* | [**licenses_create**](docs/LicenseApi.md#licenses_create) | **POST** /v1/licenses | Create License Key
@@ -247,6 +257,8 @@ Class | Method | HTTP request | Description
  - [CreateCollectionCheckoutDto](docs/CreateCollectionCheckoutDto.md)
  - [CreateCollectionDto](docs/CreateCollectionDto.md)
  - [CreateCustomerDto](docs/CreateCustomerDto.md)
+ - [CreateEntitlementDto](docs/CreateEntitlementDto.md)
+ - [CreateFramerTemplateDto](docs/CreateFramerTemplateDto.md)
  - [CreateMeterDto](docs/CreateMeterDto.md)
  - [CreateSetupCheckoutDto](docs/CreateSetupCheckoutDto.md)
  - [CreateWebhookEndpointDto](docs/CreateWebhookEndpointDto.md)
@@ -268,7 +280,9 @@ Class | Method | HTTP request | Description
  - [DisputeFileUpload](docs/DisputeFileUpload.md)
  - [DisputeList](docs/DisputeList.md)
  - [DisputeListMetaDto](docs/DisputeListMetaDto.md)
+ - [EntitlementDetailResponseDto](docs/EntitlementDetailResponseDto.md)
  - [EntitlementGrantResponseDto](docs/EntitlementGrantResponseDto.md)
+ - [FramerTemplateResponseDto](docs/FramerTemplateResponseDto.md)
  - [GithubReposResponseDto](docs/GithubReposResponseDto.md)
  - [Instance](docs/Instance.md)
  - [Invoice](docs/Invoice.md)
@@ -282,6 +296,7 @@ Class | Method | HTTP request | Description
  - [LicensesUpdateInstancePostRequest](docs/LicensesUpdateInstancePostRequest.md)
  - [LicensesUpdateRequest](docs/LicensesUpdateRequest.md)
  - [LicensesVerifyRequest](docs/LicensesVerifyRequest.md)
+ - [LinkedProductDto](docs/LinkedProductDto.md)
  - [MeterDetailResponseDto](docs/MeterDetailResponseDto.md)
  - [MeterEventsResponseDto](docs/MeterEventsResponseDto.md)
  - [MeterIngestEventDto](docs/MeterIngestEventDto.md)
@@ -342,6 +357,8 @@ Class | Method | HTTP request | Description
  - [UpdateCollectionDto](docs/UpdateCollectionDto.md)
  - [UpdateCollectionProductDto](docs/UpdateCollectionProductDto.md)
  - [UpdateCustomerDto](docs/UpdateCustomerDto.md)
+ - [UpdateEntitlementDto](docs/UpdateEntitlementDto.md)
+ - [UpdateFramerTemplateDto](docs/UpdateFramerTemplateDto.md)
  - [UpdateInstanceDto](docs/UpdateInstanceDto.md)
  - [UpdateMeterDto](docs/UpdateMeterDto.md)
  - [UpdateWebhookEndpointDto](docs/UpdateWebhookEndpointDto.md)

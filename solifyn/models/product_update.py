@@ -58,7 +58,8 @@ class ProductUpdate(BaseModel):
     is_listed: Optional[StrictBool] = Field(default=True, description="Whether the product is publicly visible.", alias="isListed")
     is_free: Optional[StrictBool] = Field(default=False, description="Whether the product is free of charge.", alias="isFree")
     addons: Optional[List[ProductCreateAddonsInner]] = Field(default=None, description="Product addons configurations.")
-    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "hasDiscordAccess", "discordGuildId", "discordRoleId", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons"]
+    entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="Array of independent entitlement IDs to link to this product.", alias="entitlementIds")
+    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "hasDiscordAccess", "discordGuildId", "discordRoleId", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons", "entitlementIds"]
 
     @field_validator('currency')
     def currency_validate_enum(cls, value):
@@ -183,7 +184,8 @@ class ProductUpdate(BaseModel):
             "stock": obj.get("stock"),
             "isListed": obj.get("isListed") if obj.get("isListed") is not None else True,
             "isFree": obj.get("isFree") if obj.get("isFree") is not None else False,
-            "addons": [ProductCreateAddonsInner.from_dict(_item) for _item in obj["addons"]] if obj.get("addons") is not None else None
+            "addons": [ProductCreateAddonsInner.from_dict(_item) for _item in obj["addons"]] if obj.get("addons") is not None else None,
+            "entitlementIds": obj.get("entitlementIds")
         })
         return _obj
 

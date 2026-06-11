@@ -44,6 +44,8 @@ from solifyn.models.create_checkout_link_dto import CreateCheckoutLinkDto
 from solifyn.models.create_collection_checkout_dto import CreateCollectionCheckoutDto
 from solifyn.models.create_collection_dto import CreateCollectionDto
 from solifyn.models.create_customer_dto import CreateCustomerDto
+from solifyn.models.create_entitlement_dto import CreateEntitlementDto
+from solifyn.models.create_framer_template_dto import CreateFramerTemplateDto
 from solifyn.models.create_meter_dto import CreateMeterDto
 from solifyn.models.create_setup_checkout_dto import CreateSetupCheckoutDto
 from solifyn.models.create_webhook_endpoint_dto import CreateWebhookEndpointDto
@@ -65,7 +67,9 @@ from solifyn.models.dispute_evidence_update import DisputeEvidenceUpdate
 from solifyn.models.dispute_file_upload import DisputeFileUpload
 from solifyn.models.dispute_list import DisputeList
 from solifyn.models.dispute_list_meta_dto import DisputeListMetaDto
+from solifyn.models.entitlement_detail_response_dto import EntitlementDetailResponseDto
 from solifyn.models.entitlement_grant_response_dto import EntitlementGrantResponseDto
+from solifyn.models.framer_template_response_dto import FramerTemplateResponseDto
 from solifyn.models.github_repos_response_dto import GithubReposResponseDto
 from solifyn.models.instance import Instance
 from solifyn.models.invoice import Invoice
@@ -79,6 +83,7 @@ from solifyn.models.licenses_deactivate_request import LicensesDeactivateRequest
 from solifyn.models.licenses_update_instance_post_request import LicensesUpdateInstancePostRequest
 from solifyn.models.licenses_update_request import LicensesUpdateRequest
 from solifyn.models.licenses_verify_request import LicensesVerifyRequest
+from solifyn.models.linked_product_dto import LinkedProductDto
 from solifyn.models.meter_detail_response_dto import MeterDetailResponseDto
 from solifyn.models.meter_events_response_dto import MeterEventsResponseDto
 from solifyn.models.meter_ingest_event_dto import MeterIngestEventDto
@@ -139,6 +144,8 @@ from solifyn.models.update_checkout_link_dto import UpdateCheckoutLinkDto
 from solifyn.models.update_collection_dto import UpdateCollectionDto
 from solifyn.models.update_collection_product_dto import UpdateCollectionProductDto
 from solifyn.models.update_customer_dto import UpdateCustomerDto
+from solifyn.models.update_entitlement_dto import UpdateEntitlementDto
+from solifyn.models.update_framer_template_dto import UpdateFramerTemplateDto
 from solifyn.models.update_instance_dto import UpdateInstanceDto
 from solifyn.models.update_meter_dto import UpdateMeterDto
 from solifyn.models.update_webhook_endpoint_dto import UpdateWebhookEndpointDto

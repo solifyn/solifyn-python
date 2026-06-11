@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **entitlement_grants_list**
-> List[EntitlementGrantResponseDto] entitlement_grants_list(status=status)
+> List[EntitlementGrantResponseDto] entitlement_grants_list(status=status, entitlement_id=entitlement_id, product_id=product_id)
 
 List Entitlement Grants
 
@@ -126,10 +126,12 @@ with solifyn.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = solifyn.EntitlementGrantsApi(api_client)
     status = 'status_example' # str | Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
+    entitlement_id = 'entitlement_id_example' # str | Filter by entitlement config ID (optional)
+    product_id = 'product_id_example' # str | Filter by product ID (optional)
 
     try:
         # List Entitlement Grants
-        api_response = api_instance.entitlement_grants_list(status=status)
+        api_response = api_instance.entitlement_grants_list(status=status, entitlement_id=entitlement_id, product_id=product_id)
         print("The response of EntitlementGrantsApi->entitlement_grants_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -144,6 +146,8 @@ with solifyn.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **str**| Filter by status (PENDING, DELIVERED, FAILED, REVOKED) | [optional] 
+ **entitlement_id** | **str**| Filter by entitlement config ID | [optional] 
+ **product_id** | **str**| Filter by product ID | [optional] 
 
 ### Return type
 

@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **is_listed** | **bool** | Whether the product is publicly visible. | [optional] [default to True]
 **is_free** | **bool** | Whether the product is free of charge. | [optional] [default to False]
 **addons** | [**List[ProductCreateAddonsInner]**](ProductCreateAddonsInner.md) | Product addons configurations. | [optional] 
+**entitlement_ids** | **List[str]** | Array of independent entitlement IDs to link to this product. | [optional] 
 
 ## Example
 

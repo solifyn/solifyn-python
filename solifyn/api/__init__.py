@@ -12,6 +12,8 @@ from solifyn.api.discord_integration_api import DiscordIntegrationApi
 from solifyn.api.discounts_api import DiscountsApi
 from solifyn.api.disputes_api import DisputesApi
 from solifyn.api.entitlement_grants_api import EntitlementGrantsApi
+from solifyn.api.entitlements_api import EntitlementsApi
+from solifyn.api.framer_integration_api import FramerIntegrationApi
 from solifyn.api.git_hub_integration_api import GitHubIntegrationApi
 from solifyn.api.license_api import LicenseApi
 from solifyn.api.license_keys_api import LicenseKeysApi
