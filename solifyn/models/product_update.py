@@ -44,6 +44,8 @@ class ProductUpdate(BaseModel):
     has_discord_access: Optional[StrictBool] = Field(default=False, description="Whether the purchase includes Discord server role access.", alias="hasDiscordAccess")
     discord_guild_id: Optional[StrictStr] = Field(default=None, description="Discord Guild (Server) ID to grant access to.", alias="discordGuildId")
     discord_role_id: Optional[StrictStr] = Field(default=None, description="Discord Role ID to assign to the user.", alias="discordRoleId")
+    has_framer_access: Optional[StrictBool] = Field(default=False, description="Whether the purchase includes Framer Template access.", alias="hasFramerAccess")
+    framer_template_id: Optional[StrictStr] = Field(default=None, description="Framer Template ID to grant access to.", alias="framerTemplateId")
     is_tax_inclusive: Optional[StrictBool] = Field(default=False, description="Whether tax is included in the base price.", alias="isTaxInclusive")
     activation_limit: Optional[StrictInt] = Field(default=None, description="Maximum concurrent activated instances allowed per license key.", alias="activationLimit")
     brand_id: Optional[StrictStr] = Field(default=None, description="Brand id for the product, if not provided will default to primary brand.", alias="brandId")
@@ -59,7 +61,7 @@ class ProductUpdate(BaseModel):
     is_free: Optional[StrictBool] = Field(default=False, description="Whether the product is free of charge.", alias="isFree")
     addons: Optional[List[ProductCreateAddonsInner]] = Field(default=None, description="Product addons configurations.")
     entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="Array of independent entitlement IDs to link to this product.", alias="entitlementIds")
-    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "hasDiscordAccess", "discordGuildId", "discordRoleId", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons", "entitlementIds"]
+    __properties: ClassVar[List[str]] = ["name", "description", "price", "currency", "imageUrl", "taxCategory", "discount", "hasLicenseKey", "hasDigitalDelivery", "hasGithubAccess", "githubRepo", "githubPermission", "hasDiscordAccess", "discordGuildId", "discordRoleId", "hasFramerAccess", "framerTemplateId", "isTaxInclusive", "activationLimit", "brandId", "billingPeriod", "trialPeriodDays", "expirationDays", "statementDescriptor", "payWhatYouWant", "metadata", "customFields", "stock", "isListed", "isFree", "addons", "entitlementIds"]
 
     @field_validator('currency')
     def currency_validate_enum(cls, value):
@@ -171,6 +173,8 @@ class ProductUpdate(BaseModel):
             "hasDiscordAccess": obj.get("hasDiscordAccess") if obj.get("hasDiscordAccess") is not None else False,
             "discordGuildId": obj.get("discordGuildId"),
             "discordRoleId": obj.get("discordRoleId"),
+            "hasFramerAccess": obj.get("hasFramerAccess") if obj.get("hasFramerAccess") is not None else False,
+            "framerTemplateId": obj.get("framerTemplateId"),
             "isTaxInclusive": obj.get("isTaxInclusive") if obj.get("isTaxInclusive") is not None else False,
             "activationLimit": obj.get("activationLimit"),
             "brandId": obj.get("brandId"),
