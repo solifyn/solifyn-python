@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **expiry_hours** | **float** | The number of hours until the entitlement expires | [optional] 
 **digital_link** | **str** | The digital download URL or redirect link | [optional] 
 **instructions** | **str** | Custom setup instructions for the user | [optional] 
+**status** | **str** | The entitlement status | [optional] [default to 'active']
 
 ## Example
 

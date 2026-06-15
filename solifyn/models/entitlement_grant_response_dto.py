@@ -42,7 +42,7 @@ class EntitlementGrantResponseDto(BaseModel):
     discord_user_id: Optional[StrictStr] = Field(default=None, description="The connected customer Discord user ID.", alias="discordUserId")
     framer_template_id: Optional[StrictStr] = Field(default=None, description="The Framer template ID if type is FRAMER.", alias="framerTemplateId")
     framer_remix_link: Optional[StrictStr] = Field(default=None, description="The single-use remix link generated for the customer if type is FRAMER.", alias="framerRemixLink")
-    status: StrictStr = Field(description="Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).")
+    status: StrictStr = Field(description="Delivery status of the collaborator invite (pending, delivered, failed, revoked).")
     oauth_url: Optional[StrictStr] = Field(default=None, description="OAuth URL to redirect the customer to.", alias="oauthUrl")
     error_details: Optional[StrictStr] = Field(default=None, description="Error message if invitation delivery failed.", alias="errorDetails")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Platform-specific metadata.")

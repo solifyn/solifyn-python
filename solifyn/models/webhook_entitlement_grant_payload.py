@@ -37,7 +37,7 @@ class WebhookEntitlementGrantPayload(BaseModel):
     github_repo: Optional[StrictStr] = Field(default=None, description="Target GitHub repository (owner/repo) if type is GITHUB.", alias="githubRepo")
     github_permission: Optional[StrictStr] = Field(default=None, description="GitHub access permission level if type is GITHUB.", alias="githubPermission")
     github_username: Optional[StrictStr] = Field(default=None, description="The connected customer GitHub username.", alias="githubUsername")
-    status: Optional[StrictStr] = Field(default=None, description="Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED).")
+    status: Optional[StrictStr] = Field(default=None, description="Delivery status of the collaborator invite (pending, delivered, failed, revoked).")
     oauth_url: Optional[StrictStr] = Field(default=None, description="OAuth URL to redirect the customer to.", alias="oauthUrl")
     error_details: Optional[StrictStr] = Field(default=None, description="Error message if invitation delivery failed.", alias="errorDetails")
     created_at: Optional[datetime] = Field(default=None, alias="createdAt")

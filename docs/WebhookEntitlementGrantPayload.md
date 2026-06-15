@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **github_repo** | **str** | Target GitHub repository (owner/repo) if type is GITHUB. | [optional] 
 **github_permission** | **str** | GitHub access permission level if type is GITHUB. | [optional] 
 **github_username** | **str** | The connected customer GitHub username. | [optional] 
-**status** | **str** | Delivery status of the collaborator invite (PENDING, DELIVERED, FAILED, REVOKED). | [optional] 
+**status** | **str** | Delivery status of the collaborator invite (pending, delivered, failed, revoked). | [optional] 
 **oauth_url** | **str** | OAuth URL to redirect the customer to. | [optional] 
 **error_details** | **str** | Error message if invitation delivery failed. | [optional] 
 **created_at** | **datetime** |  | [optional] 

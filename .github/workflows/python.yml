@@ -28,6 +28,4 @@ jobs:
           pip install -r test-requirements.txt
       - name: Test with pytest
         run: |
-          pip install -e .
-          pytest --cov=solifyn
-
+          pytest --cov={{packageName}}

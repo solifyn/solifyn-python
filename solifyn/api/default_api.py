@@ -46,7 +46,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113,7 +113,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post_with_http_info(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -180,7 +180,7 @@ class DefaultApi:
     @validate_call
     def dispute_created_post_without_preload_content(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -313,7 +313,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -380,7 +380,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post_with_http_info(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -447,7 +447,7 @@ class DefaultApi:
     @validate_call
     def dispute_lost_post_without_preload_content(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -580,7 +580,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -647,7 +647,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post_with_http_info(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -714,7 +714,7 @@ class DefaultApi:
     @validate_call
     def dispute_won_post_without_preload_content(
         self,
-        webhook_dispute_payload:  = None,
+        webhook_dispute_payload: Optional[WebhookDisputePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -847,7 +847,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_created_post(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -914,7 +914,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_created_post_with_http_info(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -981,7 +981,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_created_post_without_preload_content(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1114,7 +1114,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_delivered_post(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1181,7 +1181,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_delivered_post_with_http_info(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1248,7 +1248,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_delivered_post_without_preload_content(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1381,7 +1381,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_failed_post(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1448,7 +1448,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_failed_post_with_http_info(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1515,7 +1515,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_failed_post_without_preload_content(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1648,7 +1648,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_revoked_post(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1715,7 +1715,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_revoked_post_with_http_info(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1782,7 +1782,7 @@ class DefaultApi:
     @validate_call
     def entitlement_grant_revoked_post_without_preload_content(
         self,
-        webhook_entitlement_grant_payload:  = None,
+        webhook_entitlement_grant_payload: Optional[WebhookEntitlementGrantPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1915,7 +1915,7 @@ class DefaultApi:
     @validate_call
     def license_created_post(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1982,7 +1982,7 @@ class DefaultApi:
     @validate_call
     def license_created_post_with_http_info(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2049,7 +2049,7 @@ class DefaultApi:
     @validate_call
     def license_created_post_without_preload_content(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2182,7 +2182,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2249,7 +2249,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post_with_http_info(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2316,7 +2316,7 @@ class DefaultApi:
     @validate_call
     def license_revoked_post_without_preload_content(
         self,
-        webhook_license_payload:  = None,
+        webhook_license_payload: Optional[WebhookLicensePayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2449,7 +2449,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post(
         self,
-        webhook_payment_payload:  = None,
+        webhook_payment_payload: Optional[WebhookPaymentPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2516,7 +2516,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post_with_http_info(
         self,
-        webhook_payment_payload:  = None,
+        webhook_payment_payload: Optional[WebhookPaymentPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2583,7 +2583,7 @@ class DefaultApi:
     @validate_call
     def payment_created_post_without_preload_content(
         self,
-        webhook_payment_payload:  = None,
+        webhook_payment_payload: Optional[WebhookPaymentPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2716,7 +2716,7 @@ class DefaultApi:
     @validate_call
     def payment_failed_post(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2783,7 +2783,7 @@ class DefaultApi:
     @validate_call
     def payment_failed_post_with_http_info(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2850,7 +2850,7 @@ class DefaultApi:
     @validate_call
     def payment_failed_post_without_preload_content(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2983,7 +2983,7 @@ class DefaultApi:
     @validate_call
     def payment_succeeded_post(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3050,7 +3050,7 @@ class DefaultApi:
     @validate_call
     def payment_succeeded_post_with_http_info(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3117,7 +3117,7 @@ class DefaultApi:
     @validate_call
     def payment_succeeded_post_without_preload_content(
         self,
-        order:  = None,
+        order: Optional[Order] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3250,7 +3250,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3317,7 +3317,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post_with_http_info(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3384,7 +3384,7 @@ class DefaultApi:
     @validate_call
     def refund_failed_post_without_preload_content(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3517,7 +3517,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3584,7 +3584,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post_with_http_info(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3651,7 +3651,7 @@ class DefaultApi:
     @validate_call
     def refund_succeeded_post_without_preload_content(
         self,
-        webhook_refund_payload:  = None,
+        webhook_refund_payload: Optional[WebhookRefundPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3784,7 +3784,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3851,7 +3851,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post_with_http_info(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3918,7 +3918,7 @@ class DefaultApi:
     @validate_call
     def subscription_created_post_without_preload_content(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4051,7 +4051,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4118,7 +4118,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post_with_http_info(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4185,7 +4185,7 @@ class DefaultApi:
     @validate_call
     def subscription_deactivated_post_without_preload_content(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4318,7 +4318,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4385,7 +4385,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post_with_http_info(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4452,7 +4452,7 @@ class DefaultApi:
     @validate_call
     def subscription_updated_post_without_preload_content(
         self,
-        webhook_subscription_payload:  = None,
+        webhook_subscription_payload: Optional[WebhookSubscriptionPayload] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

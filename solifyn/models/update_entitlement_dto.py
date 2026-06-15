@@ -40,7 +40,8 @@ class UpdateEntitlementDto(BaseModel):
     expiry_hours: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of hours until the entitlement expires", alias="expiryHours")
     digital_link: Optional[StrictStr] = Field(default=None, description="The digital download URL or redirect link", alias="digitalLink")
     instructions: Optional[StrictStr] = Field(default=None, description="Custom setup instructions for the user")
-    __properties: ClassVar[List[str]] = ["name", "type", "githubRepo", "githubPermission", "discordGuildId", "discordRoleId", "framerTemplateId", "licenseKey", "activationLimit", "activationMessage", "expiryHours", "digitalLink", "instructions"]
+    status: Optional[StrictStr] = Field(default='active', description="The entitlement status")
+    __properties: ClassVar[List[str]] = ["name", "type", "githubRepo", "githubPermission", "discordGuildId", "discordRoleId", "framerTemplateId", "licenseKey", "activationLimit", "activationMessage", "expiryHours", "digitalLink", "instructions", "status"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -50,6 +51,16 @@ class UpdateEntitlementDto(BaseModel):
 
         if value not in set(['GITHUB', 'DISCORD', 'FRAMER', 'LICENSE', 'DIGITAL']):
             raise ValueError("must be one of enum values ('GITHUB', 'DISCORD', 'FRAMER', 'LICENSE', 'DIGITAL')")
+        return value
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['active', 'disabled']):
+            raise ValueError("must be one of enum values ('active', 'disabled')")
         return value
 
     model_config = ConfigDict(
@@ -115,7 +126,8 @@ class UpdateEntitlementDto(BaseModel):
             "activationMessage": obj.get("activationMessage"),
             "expiryHours": obj.get("expiryHours"),
             "digitalLink": obj.get("digitalLink"),
-            "instructions": obj.get("instructions")
+            "instructions": obj.get("instructions"),
+            "status": obj.get("status") if obj.get("status") is not None else 'active'
         })
         return _obj
 
